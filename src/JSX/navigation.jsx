@@ -1,79 +1,88 @@
 // nvigation bar
-import React, { useState } from 'react';
-import { NavIcons } from './navIcons.jsx';
+import React from 'react';
+import NavIcons from './navIcons.jsx';
+import NavOptions from './optionIcons.jsx';
 import styles from '../index.scss';
+import logo from '../../images/Capoo_hold_its_feet.png';
 
-function NavigationBar() {
-  const [buttonNumber] = useState(5);
-  const [iconArray, setIconArray] = useState(Array(buttonNumber).fill(styles.navIcons));
+export default function NavigationBar(props) {
+  const {
+    iconArray, clickIcon,
+    optionArray, clickOption,
+    areaChange, clickBlank,
+  } = props;
 
-  function areaChange(AreaNumber) {
-    let iconArrayCopy = iconArray.slice();
-    switch (AreaNumber) {
-      case 1:
-        break;
-      case 0:
-        iconArrayCopy = iconArrayCopy.fill(styles.navIcons);
-        setIconArray(iconArrayCopy);
-        break;
-      default:
-        break;
-    }
-  }
-
-  function Click(indexOfIcon) {
-    const iconArrayCopy = iconArray.slice();
-    switch (iconArrayCopy[indexOfIcon]) {
-      case styles.navIcons:
-        iconArrayCopy.fill(styles.navIcons);
-        iconArrayCopy[indexOfIcon] = styles.navIconsChange;
-        break;
-      case styles.navIconsChange:
-        iconArrayCopy[indexOfIcon] = styles.navIcons;
-        break;
-      default:
-        break;
-    }
-    setIconArray(iconArrayCopy);
-  }
-
-  function icons(iconStyle, number) {
+  function createOptions(optionStyle, index) {
     return (
-      <NavIcons
-        key={number}
-        iconClass={iconStyle}
-        Click={() => Click(number)}
+      <NavOptions
+        key={`${index}O`}
+        optionClass={optionStyle}
+        clickOption={() => clickOption(index)}
+        optionIndex={index}
       />
     );
   }
 
-  function iconSet() {
+  function groupOptions() {
     return (
-      iconArray.map((iconStyle, index) => icons(iconStyle, index))
+      optionArray.map((optionStyle, index) => createOptions(optionStyle, index))
     );
   }
+
+  function createIcons(iconStyle, index) {
+    return (
+      <NavIcons
+        key={`${index}I`}
+        iconClass={iconStyle}
+        clickIcon={() => clickIcon(index)}
+        iconImage={index}
+      />
+    );
+  }
+
+  function groupIcons() {
+    return (
+      iconArray.map((iconStyle, index) => createIcons(iconStyle, index))
+    );
+  }
+
   return (
-    <div className={styles.navBar}>
-      <div
-        className={styles.navOption}
-        onClick={() => areaChange(0)}
-        onKeyPress={areaChange}
-        role="button"
-        tabIndex="0"
-      >
-        {iconSet()}
-      </div>
-      <div
-        className={styles.navIcon}
-        onClick={() => areaChange(1)}
-        onKeyPress={areaChange}
-        role="button"
-        tabIndex="0"
-      >
-        {iconSet()}
+    <div className={styles.navBackground}>
+      <div className={styles.navBar}>
+        <div className={styles.logoContainer}>
+          <img
+            src={logo}
+            alt="logo"
+            className={styles.logo}
+          />
+        </div>
+        <div
+          className={styles.navOption}
+          onClick={() => areaChange(0)}
+          onKeyPress={areaChange}
+          role="button"
+          tabIndex={0}
+        >
+          {groupOptions()}
+        </div>
+        <div
+          className={styles.middleBlank}
+          onClick={clickBlank}
+          onKeyPress={clickBlank}
+          role="button"
+          tabIndex={0}
+          aria-label="clickBlank"
+        />
+        <div
+          className={styles.navIcon}
+          onClick={() => areaChange(1)}
+          onKeyPress={areaChange}
+          role="button"
+          tabIndex={0}
+        >
+          {groupIcons()}
+        </div>
       </div>
     </div>
   );
 }
-
-export { NavigationBar };

@@ -1,21 +1,39 @@
-%nabBase {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 2rem;
-  height: 2rem;
-  margin-left: 3vw;
-  background-color: rgb(74, 74, 240);
+.blockOfIconNList {
+  @extend %placeInTheMiddle;
+  width: 100%;
+  min-width: 53px;
+  padding: 0.5rem 0;
+  flex-direction: column;;
+  border: $R;
+}
+
+%navBase {
+  @extend %placeInTheMiddle;
+  width: 100%;
+  min-width: 2rem;
   outline: none;
+  font-size: 2rem;
+  justify-content: flex-start;
+  padding-left: 0.6rem;
+  border: $P;
+}
+
+%navBase:hover {
+  background-color: rgb(113, 127, 208);
+  cursor: pointer;
 }
 
 .navIcons {
-  @extend %nabBase;
-  background-color: rgb(74, 74, 240);
-  
+  @extend %navBase;
+  color: red;
 }
 
-.navIconsChange {
-  @extend %nabBase;
-  background-color: rgb(74, 240, 196);
+.navIcons1 {
+  @extend %navBase;
+  color: rgb(255, 0, 179);
+}
+
+.navIcons2 {
+  @extend %navBase;
+  color: rgb(0, 187, 255);
 }

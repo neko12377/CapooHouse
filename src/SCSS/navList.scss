@@ -1,0 +1,35 @@
+%navList {
+  @extend %placeInTheMiddle;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  min-width: 120px; 
+  background-color: rgb(0, 183, 255);
+  position: absolute;
+  top: 2.8rem;
+  transform: translateX(3rem);
+  list-style-type: none;
+  border-radius: 8px 30px;
+  @include userSelect(none);
+  li {
+    @extend %placeInTheMiddle;
+    justify-content: flex-start;
+    width: 100%;
+    height: 30%;
+    padding: 0.5rem 0 0.5rem 15%;
+    border-bottom: 0.5px solid white;
+    border-radius: 6px 20px;
+    color: white;
+  }
+  li:hover {
+    background-color: black;
+  }
+}
+
+.navListShown {
+  @extend %navList;
+}
+
+.navListNotShown {
+  display: none;
+}
+

@@ -1,0 +1,48 @@
+.mainBody {
+  width: 100%;
+  min-width: 320px;
+  overflow: scroll;
+  outline: none;
+  z-index: 0;
+  padding: 0 2%;
+  border: $R;
+}
+
+.messageBlock {
+  width: 100%;
+  height: 200px;
+  border: $G;
+}
+
+@media (max-width: 576px) {
+  .mainBody {
+    min-width: 320px;
+    max-width: 598px;
+    width: 100%;
+  }
+}
+
+@media (min-width: 577px) {
+  .mainBody {
+    min-width: 320px;
+    max-width: 598px;
+  }
+}
+
+@media (min-width: 768px) {
+  .mainBody {
+    max-width: 598px;
+  }
+}
+
+@media (min-width: 992px) {
+  .mainBody {
+    max-width: 598px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .mainBody {
+    max-width: 598px;
+  }
+}

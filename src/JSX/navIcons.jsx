@@ -1,25 +1,42 @@
 // nav-bar icons
-
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faYoutube } from '@fortawesome/free-brands-svg-icons';
+import {
+  faCogs,
+} from '@fortawesome/free-solid-svg-icons';
+import styles from '../index.scss';
 
-function NavIcons(props) {
-  const { iconClass } = props;
-  const { Click } = props;
-  // console.log(props, 'props');
+const iconImages = [
+  faCogs, faCogs, faCogs,
+];
+
+export default function NavIcons(props) {
+  const { iconClass, clickIcon, iconImage } = props;
+
+  const navIconStyles = [
+    styles.navIcons, styles.navIcons1, styles.navIcons2,
+  ];
+
   return (
-    <div
-      className={iconClass}
-      onClick={Click}
-      onKeyPress={Click}
-      role="button"
-      aria-label="navIcon"
-      tabIndex={0}
-    >
-      <FontAwesomeIcon icon={faYoutube} />
+    <div className={styles.blockOfIconNList}>
+      <div
+        className={navIconStyles[iconImage]}
+        onClick={clickIcon}
+        onKeyPress={clickIcon}
+        role="button"
+        aria-label="navIcon"
+        tabIndex={0}
+      >
+        <FontAwesomeIcon icon={iconImages[iconImage]} />
+      </div>
+      <ul className={iconClass}>
+        <li>一號</li>
+        <li>二號</li>
+        <li>三號</li>
+        <li>一號</li>
+        <li>二號</li>
+        <li>三號</li>
+      </ul>
     </div>
   );
 }
-
-export { NavIcons };

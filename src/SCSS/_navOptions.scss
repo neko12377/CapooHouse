@@ -1,0 +1,51 @@
+.blockOfOptionNList {
+  @extend %placeInTheMiddle;
+  width: 100%;
+  min-width: 53px;
+  padding: 0.5rem 0;
+  flex-direction: column;
+  border: $R;
+}
+
+.navOptions {
+  @extend %navBase;
+  justify-content: center;
+  color: rgb(255, 255, 255);
+}
+
+.optionDescriptions {
+  font-size: 1.5rem;
+  color: rgb(255, 255, 255);
+  font-weight: 900;
+  border: $G;
+}
+
+@media (max-width: 576px) {
+  .optionDescriptions {
+    display: none;
+  }
+}
+
+@media (min-width: 577px) {
+  .optionDescriptions {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .optionDescriptions {
+    display: none;
+  }
+}
+
+@media (min-width: 992px) {
+  .optionDescriptions {
+    display: none;
+  }
+}
+
+@media (min-width: 1200px) {
+  .optionDescriptions {
+    display: flex;
+  }
+}

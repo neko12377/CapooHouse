@@ -1,0 +1,185 @@
+$navWidthOne: 235px;
+$navWidthTwo: 74px;
+
+.navBackground {
+  width: $navWidthOne;
+  border: $B;
+  flex-direction: column;
+}
+
+.navBar {
+  @extend %placeInTheMiddle;
+  width: 100%;
+  z-index: 100;
+  flex-direction: column;
+}
+
+//distinct area of options and icons
+%navArea {
+  @extend %placeInTheMiddle;
+  outline: none;
+  margin: 0 0 1rem 0;
+  justify-content: space-between;
+  border: $G;
+}
+
+.logoContainer {
+  @extend %navArea;
+  width: 100%;
+  min-width: 68px;
+  justify-content: flex-start;
+  border: $R;
+}
+
+$logoRatio: 4rem;
+
+.logo {
+  height: $logoRatio;
+  width: 1.046 * $logoRatio;
+  box-shadow:  2px 5px 10px;
+  border-radius: 50%;
+  background-image: 
+    linear-gradient(
+      120deg,
+      rgb(240, 239, 196) 0%,
+      rgb(245, 242, 134) 40%,
+      rgb(126, 126, 13) 100%,
+    );
+}
+
+.navOption {
+  @extend %navArea;
+  width: 100%;
+  flex-direction: column;
+}
+
+.navIcon {
+  @extend %navArea;
+  width: 100%;
+}
+
+.middleBlank {
+  width: 20%;
+  height: 100%;
+  outline: none;
+  display: none;
+}
+
+@media (max-width: 576px) {
+  .navBackground {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    justify-items: flex-end;
+  }
+
+  .navBar {
+    flex-direction: row;
+  }
+
+  %navArea {
+    width: 100%;
+  }
+
+  .logoContainer {
+    display: none
+  }
+
+  .navOption {
+    flex-direction: row;
+    margin: 0;
+  }
+
+  .navIcon {
+    display: none;
+  }
+}
+
+@media (min-width: 577px) {
+  %navArea {
+    width: 100%;
+  }
+
+  .navBackground {
+    width: $navWidthTwo;
+  } 
+
+  .logoContainer {
+    display: flex;
+  }
+
+  .navOption {
+    flex-direction: column;
+  }
+
+  .navIcon {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media (min-width: 768px) {
+  %navArea {
+    width: 100%;
+  }
+
+  .navBackground {
+    width: $navWidthTwo;
+  } 
+
+  .navOption {
+
+  }
+
+  .navIcon {
+    
+  }
+}
+
+@media (min-width: 992px) {
+  %navArea {
+    width: 100%;
+  }
+
+  .navBackground {
+    width: $navWidthTwo;
+  } 
+  
+  .logoContainer {
+    width: $navWidthTwo;
+  }
+
+  .navOption {
+    width: $navWidthTwo;
+    outline: none;
+    border: $G;
+  }
+  
+  .navIcon {
+    width: $navWidthTwo;
+    outline: none;
+    border: $G;
+  }
+}
+
+@media (min-width: 1200px) {
+  .navBackground {
+    width: $navWidthOne;
+  } 
+
+  .logoContainer {
+    width: 159px;
+  }
+
+  .navOption {
+    width: 159px;
+    outline: none;
+    border: $G;
+  }
+  
+  .navIcon {
+    width: 159px;
+    outline: none;
+    border: $G;
+  }
+}
