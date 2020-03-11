@@ -1,10 +1,12 @@
 $navWidthOne: 235px;
-$navWidthTwo: 74px;
+$navWidthTwo: 86px;
 
 .navBackground {
   width: $navWidthOne;
-  border: $B;
   flex-direction: column;
+  min-width: $navWidthTwo;
+  padding: 0.5rem 0;
+  border: $B;
 }
 
 .navBar {
@@ -20,15 +22,13 @@ $navWidthTwo: 74px;
   outline: none;
   margin: 0 0 1rem 0;
   justify-content: space-between;
-  border: $G;
 }
 
 .logoContainer {
   @extend %navArea;
   width: 100%;
-  min-width: 68px;
+  min-width: $navWidthTwo;
   justify-content: flex-start;
-  border: $R;
 }
 
 $logoRatio: 4rem;
@@ -36,14 +36,15 @@ $logoRatio: 4rem;
 .logo {
   height: $logoRatio;
   width: 1.046 * $logoRatio;
-  box-shadow:  2px 5px 10px;
+  box-shadow:  2px 5px 10px rgb(48, 48, 1);
   border-radius: 50%;
   background-image: 
     linear-gradient(
-      120deg,
+      160deg,
       rgb(240, 239, 196) 0%,
       rgb(245, 242, 134) 40%,
-      rgb(126, 126, 13) 100%,
+      rgb(154, 150, 45) 70%,
+      rgb(103, 103, 11) 100%,
     );
 }
 
@@ -51,6 +52,8 @@ $logoRatio: 4rem;
   @extend %navArea;
   width: 100%;
   flex-direction: column;
+  align-items: flex-end;
+  outline: none;
 }
 
 .navIcon {
@@ -106,6 +109,7 @@ $logoRatio: 4rem;
 
   .logoContainer {
     display: flex;
+    justify-content: center;
   }
 
   .navOption {
@@ -125,7 +129,12 @@ $logoRatio: 4rem;
 
   .navBackground {
     width: $navWidthTwo;
-  } 
+  }
+
+  .logoContainer {
+    display: flex;
+    justify-content: center;
+  }
 
   .navOption {
 
@@ -151,35 +160,30 @@ $logoRatio: 4rem;
 
   .navOption {
     width: $navWidthTwo;
-    outline: none;
-    border: $G;
   }
   
   .navIcon {
     width: $navWidthTwo;
-    outline: none;
-    border: $G;
   }
 }
 
 @media (min-width: 1200px) {
   .navBackground {
     width: $navWidthOne;
+    padding: 0.5rem 2%;
   } 
 
   .logoContainer {
-    width: 159px;
+    width: 100%;
+    justify-content: flex-start;
+    padding-left: 0.5rem;
   }
 
   .navOption {
-    width: 159px;
-    outline: none;
-    border: $G;
+    width: 100%;
   }
   
   .navIcon {
-    width: 159px;
-    outline: none;
-    border: $G;
+    width: 100%;
   }
 }

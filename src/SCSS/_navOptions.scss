@@ -2,22 +2,29 @@
   @extend %placeInTheMiddle;
   width: 100%;
   min-width: 53px;
-  padding: 0.5rem 0;
+  padding: 0.2rem 1rem 0.2rem 0;
   flex-direction: column;
-  border: $R;
+  outline: none;
 }
 
 .navOptions {
   @extend %navBase;
   justify-content: center;
+  border-radius: 8px;
   color: rgb(255, 255, 255);
+  outline: none;
+}
+
+.capooContainer {
+  width: 5rem;
 }
 
 .optionDescriptions {
-  font-size: 1.5rem;
+  writing-mode: vertical-lr;
+  font-size: 1.2rem;
+  align-items: flex-start;
   color: rgb(255, 255, 255);
   font-weight: 900;
-  border: $G;
 }
 
 @media (max-width: 576px) {
