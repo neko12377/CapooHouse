@@ -51,10 +51,18 @@ export default function Capoo() {
   );
 
   function clickBlank() {
-    setOptionArray(Array(itemNumber.optionNumber).fill(styles.blockOfOptionNList));
-    setIconArray(Array(itemNumber.iconNumber).fill(styles.navListNotShown));
-    setCapooImages(capooImagesArray);
-    setOptionOptionsArray(Array(itemNumber.optionNumber).fill(styles.notShow));
+    setOptionArray(
+      Array(itemNumber.optionNumber).fill(styles.blockOfOptionNList),
+    );
+    setIconArray(
+      Array(itemNumber.iconNumber).fill(styles.navListNotShown),
+    );
+    setCapooImages(
+      capooImagesArray,
+    );
+    setOptionOptionsArray(
+      Array(itemNumber.optionNumber).fill(styles.notShow),
+    );
   }
 
   function areaChange(AreaNumber) {
@@ -62,13 +70,17 @@ export default function Capoo() {
     let optionArrayCopy = optionArray.slice();
     switch (AreaNumber) {
       case 1:
-        optionArrayCopy = optionArrayCopy.fill(styles.blockOfOptionNList);
+        optionArrayCopy = optionArrayCopy.fill(
+          styles.blockOfOptionNList,
+        );
         setOptionArray(
           optionArrayCopy,
         );
         break;
       case 0:
-        iconArrayCopy = iconArrayCopy.fill(styles.navListNotShown);
+        iconArrayCopy = iconArrayCopy.fill(
+          styles.navListNotShown,
+        );
         setIconArray(
           iconArrayCopy,
         );
@@ -82,7 +94,9 @@ export default function Capoo() {
     const iconArrayCopy = iconArray.slice();
     switch (iconArrayCopy[indexOfIcon]) {
       case styles.navListNotShown:
-        iconArrayCopy.fill(styles.navListNotShown);
+        iconArrayCopy.fill(
+          styles.navListNotShown,
+        );
         iconArrayCopy[indexOfIcon] = styles.navListShown;
         break;
       case styles.navListShown:
@@ -100,8 +114,12 @@ export default function Capoo() {
     let capooImagesCopy = capooImages.slice();
     switch (optionArrayCopy[indexOfOption]) {
       case styles.blockOfOptionNList:
-        optionArrayCopy.fill(styles.blockOfOptionNList);
-        optionOptionsArrayCopy.fill(styles.notShow);
+        optionArrayCopy.fill(
+          styles.blockOfOptionNList,
+        );
+        optionOptionsArrayCopy.fill(
+          styles.notShow,
+        );
         optionArrayCopy[indexOfOption] = styles.blockOfOptionNListTriggered;
         optionOptionsArrayCopy[indexOfOption] = styles.optionOptions;
         capooImagesCopy = capooImagesArray;
@@ -130,9 +148,11 @@ export default function Capoo() {
       const optionArrayCopy = optionArray.slice();
       const optionOptionsArrayCopy = optionOptionsArray.slice();
       const capooImagesCopy = capooImages.slice();
+
       optionArrayCopy[indexOfImages] = styles.blockOfOptionNListTriggered;
       capooImagesCopy[indexOfImages] = capooImagesM[indexOfImages];
       optionOptionsArrayCopy[indexOfImages] = styles.optionOptions;
+
       setOptionArray(optionArrayCopy);
       setOptionOptionsArray(optionOptionsArrayCopy);
       setCapooImages(capooImagesCopy);
@@ -153,29 +173,34 @@ export default function Capoo() {
     const dragableArea = {
       left: 0,
       top: 0,
-      right: document.documentElement.clientWidth - capooDragCoordinate.width,
-      bottom: document.documentElement.scrollHeight - capooDragCoordinate.height,
+      right: document.documentElement.clientWidth
+        - capooDragCoordinate.width,
+      bottom: document.documentElement.scrollHeight
+        - capooDragCoordinate.height,
     };
 
     let startX;
     let startY;
 
-    function move(e) {
-      let x = e.clientX - startX;
-      let y = e.clientY - startY;
-      x = Math.max(Math.min(x, dragableArea.right), dragableArea.left);
-      y = Math.max(Math.min(y, dragableArea.bottom), dragableArea.top);
-      capooDrag.style.left = `${x}px`;
-      capooDrag.style.top = `${y}px`;
-      // console.log(e.clientX, 'X');
-      // console.log(e.clientY, 'Y');
-      // console.log(startX, 'x');
-      // console.log(startY, 'y');
-      // console.log(document.documentElement.clientWidth, 'clientWidth');
+    function move(event) {
+      if (!navigator.maxTouchPoints) {
+        let x = event.clientX - startX;
+        let y = event.clientY - startY;
+        x = Math.max(Math.min(x, dragableArea.right), dragableArea.left);
+        y = Math.max(Math.min(y, dragableArea.bottom), dragableArea.top);
+        capooDrag.style.left = `${x}px`;
+        capooDrag.style.top = `${y}px`;
+      } else {
+        let x = event.touches['0'].clientX - startX;
+        let y = event.touches['0'].clientY - startY;
+        x = Math.max(Math.min(x, dragableArea.right), dragableArea.left);
+        y = Math.max(Math.min(y, dragableArea.bottom), dragableArea.top);
+        capooDrag.style.left = `${x}px`;
+        capooDrag.style.top = `${y}px`;
+      }
     }
 
-    function stop(e) {
-      e.preventDefault();
+    function stop() {
       if (!(navigator.maxTouchPoints)) {
         document.documentElement.removeEventListener('mousemove', move);
         document.documentElement.removeEventListener('mouseup', stop);
@@ -185,27 +210,31 @@ export default function Capoo() {
       }
     }
 
-    function dragStart(e) {
-      e.preventDefault();
-      startX = e.clientX - capooDrag.offsetLeft;
-      startY = e.clientY - capooDrag.offsetTop;
+    function dragStart(event) {
       if (document.documentElement.clientWidth < 577) {
         capooDrag.style.top = '';
       }
       if (!(navigator.maxTouchPoints)) {
+        event.preventDefault();
+        startX = event.clientX - capooDrag.offsetLeft;
+        startY = event.clientY - capooDrag.offsetTop;
         document.documentElement.addEventListener('mousemove', move);
         document.documentElement.addEventListener('mouseup', stop);
       } else {
+        startX = event.touches['0'].clientX - capooDrag.offsetLeft;
+        startY = event.touches['0'].clientY - capooDrag.offsetTop;
         document.documentElement.addEventListener('touchmove', move);
         document.documentElement.addEventListener('touchend', stop);
       }
-      // console.log(capooDrag.offsetLeft, 'capooDragCoordinate.x');
     }
     if (!(navigator.maxTouchPoints)) {
       capooDrag.addEventListener('mousedown', dragStart);
     } else {
       capooDrag.addEventListener('touchstart', dragStart);
     }
+    document.body.addEventListener('touchmove', (event) => {
+      event.preventDefault();
+    }, false);
 
     return (() => {
       capooDrag.removeEventListener('mousedown', dragStart);
