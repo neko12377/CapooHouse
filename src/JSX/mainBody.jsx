@@ -13,6 +13,10 @@ export default function Mainbody(props) {
       aria-label="mainBody"
     >
       <div className={styles.messageBlock} />
+      <p className={styles.copyRight}>
+        {`© Copyright Kasper Chen 2020.
+          © Copyright of Images belongs to Yara(亞拉)`}
+      </p>
     </div>
   );
 }

@@ -10,32 +10,32 @@
   border: $G;
 }
 
-@media (max-width: 576px) {
+@include phone {
   .sideBody {
     display: none;
   }
 }
 
-@media (min-width: 577px) {
+@include bigPhone {
   .sideBody {
     display: none;
   }
 }
 
-@media (min-width: 768px) {
+@include pad {
   .sideBody {
     display: none;
   }
 }
 
-@media (min-width: 992px) {
+@include bigPad {
   .sideBody {
     display: flex;
     min-width: 290px;
   }
 }
 
-@media (min-width: 1200px) {
+@include PC {
   .sideBody {
     display: flex;
     min-width: 350px;

@@ -1,5 +1,5 @@
 // nav-bar options
-import React, { useState } from 'react';
+import React from 'react';
 // Try FontAwesome
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import {
@@ -10,26 +10,17 @@ import React, { useState } from 'react';
 // } from '@fortawesome/free-regular-svg-icons';
 // Try FontAwesome
 
-// Images of option
-import homePageLogo from '../../images/cute_king/cute_king01.png';
-import homePageLogoM from '../../images/cute_king.png';
-import informationLogo from '../../images/Capoo_dance frame/Capoo01.png';
-import informationLogoM from '../../images/Capoo_dance.png';
-import messageLoge from '../../images/capooMailman/capooMailman01.png';
-import messageLogeM from '../../images/capooMailman.png';
-import conversationLogo from '../../images/capooPhone/capooPhone01.png';
-import conversationLogoM from '../../images/capooPhone.png';
-import tagLogo from '../../images/rainbowCapoo/rainbowCapoo01.png';
-import tagLogoM from '../../images/rainbowCapoo.png';
-// Images of option
-
 import styles from '../index.scss';
 
 export default function NavOption(props) {
   const {
     optionClass,
-    clickOption,
+    touchOption,
     optionIndex,
+    capooImages,
+    animateCapoo,
+    notAnimateCapoo,
+    optionOptionsArray,
   } = props;
 
   // Try FontAwesome
@@ -38,54 +29,80 @@ export default function NavOption(props) {
   // ];
   // Try FontAwesome
 
-  const capooImages = [
-    homePageLogo, informationLogo, messageLoge, conversationLogo, tagLogo,
-  ];
-
-  const capooImagesM = [
-    homePageLogoM, informationLogoM, messageLogeM, conversationLogoM, tagLogoM,
-  ];
-
   const optionDescription = [
-    '首頁', '通知', '訊息', '聊天', '標記',
+    '主題商店', '今日咖波', '咖波訊息', '聊天', 'line貼圖',
   ];
 
-  const [capooImagesShift, setCapooImagesShift] = useState(capooImages[optionIndex]);
+  const optionLists = [
+    ['咖波屋', '奶泡貓咖啡'], // 0
+    ['每日咖波幣', '好運咖波'], // 1
+    ['活動通知', '回覆通知'], // 2
+    ['社群一', '社群二'], // 3
+    ['貼圖一', '貼圖二', '貼圖三'], // 4
+  ];
 
-  function animateCapoo() {
-    setCapooImagesShift(capooImagesM[optionIndex]);
+  const alternative = [
+    'homepage',
+    'dance', 'mail',
+    'conversation',
+    'line_sticker',
+  ];
+
+  function stopBubbling(event) {
+    console.log(event.target);
   }
 
-  function notAnimateCapoo() {
-    setCapooImagesShift(capooImages[optionIndex]);
+  function creatListItems(item) {
+    return (
+      <option
+        key={`${item}Z`}
+        onClick={stopBubbling}
+        onKeyPress={stopBubbling}
+      >
+        {item}
+      </option>
+    );
+  }
+
+  function optionOptions(listIndex) {
+    return (
+      optionLists[listIndex].map(
+        (item) => creatListItems(item),
+      )
+    );
   }
 
   return (
     <div
-      className={styles.blockOfOptionNList}
-      onMouseEnter={animateCapoo}
-      onMouseLeave={notAnimateCapoo}
+      className={optionClass}
+      onMouseOver={animateCapoo}
+      onMouseOut={notAnimateCapoo}
+      onFocus={animateCapoo}
+      onBlur={notAnimateCapoo}
     >
       <div
-        className={optionClass}
-        onClick={clickOption}
-        onKeyPress={clickOption}
+        className={styles.navOptions}
+        onClick={touchOption}
+        onKeyPress={touchOption}
         role="button"
         aria-label="navOption"
         tabIndex={0}
       >
         {/* <FontAwesomeIcon icon={optionImages[optionIndex]} /> */}
-        <div>
+        <div className={styles.capooContainer}>
           <img
-            className={styles.capooContainer}
-            src={capooImagesShift}
-            alt="homepage"
+            className={styles.capooImage}
+            src={capooImages[optionIndex]}
+            alt={alternative[optionIndex]}
           />
         </div>
         <div className={styles.optionDescriptions}>
           {optionDescription[optionIndex]}
         </div>
       </div>
+      <ul className={optionOptionsArray[optionIndex]}>
+        {optionOptions(optionIndex)}
+      </ul>
     </div>
   );
 }

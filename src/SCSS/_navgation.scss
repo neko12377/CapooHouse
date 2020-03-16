@@ -7,12 +7,12 @@ $navWidthTwo: 86px;
   min-width: $navWidthTwo;
   padding: 0.5rem 0;
   border: $B;
+  @include userSelect(none);
 }
 
 .navBar {
   @extend %placeInTheMiddle;
   width: 100%;
-  z-index: 100;
   flex-direction: column;
 }
 
@@ -24,18 +24,15 @@ $navWidthTwo: 86px;
   justify-content: space-between;
 }
 
-.logoContainer {
-  @extend %navArea;
-  width: 100%;
-  min-width: $navWidthTwo;
-  justify-content: flex-start;
-}
-
 $logoRatio: 4rem;
 
 .logo {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
   height: $logoRatio;
   width: 1.046 * $logoRatio;
+  z-index: 1000;
   box-shadow:  2px 5px 10px rgb(48, 48, 1);
   border-radius: 50%;
   background-image: 
@@ -61,19 +58,13 @@ $logoRatio: 4rem;
   width: 100%;
 }
 
-.middleBlank {
-  width: 20%;
-  height: 100%;
-  outline: none;
-  display: none;
-}
-
-@media (max-width: 576px) {
+@include phone {
   .navBackground {
     width: 100%;
     position: fixed;
     bottom: 0;
     justify-items: flex-end;
+    padding: 0;
   }
 
   .navBar {
@@ -84,8 +75,9 @@ $logoRatio: 4rem;
     width: 100%;
   }
 
-  .logoContainer {
-    display: none
+  .logo {
+    right: 0.5rem;
+    bottom: 90px;
   }
 
   .navOption {
@@ -98,23 +90,24 @@ $logoRatio: 4rem;
   }
 }
 
-@media (min-width: 577px) {
+@include bigPhone {
   %navArea {
     width: 100%;
   }
 
   .navBackground {
     width: $navWidthTwo;
-  } 
+  }
 
-  .logoContainer {
-    display: flex;
-    justify-content: center;
+  .logo {
+    left: 50%;
+    top: 4rem;
   }
 
   .navOption {
     flex-direction: column;
   }
+
 
   .navIcon {
     display: flex;
@@ -122,7 +115,7 @@ $logoRatio: 4rem;
   }
 }
 
-@media (min-width: 768px) {
+@include pad {
   %navArea {
     width: 100%;
   }
@@ -131,21 +124,19 @@ $logoRatio: 4rem;
     width: $navWidthTwo;
   }
 
-  .logoContainer {
-    display: flex;
-    justify-content: center;
-  }
+  // .navOption {
 
-  .navOption {
+  // }
 
-  }
+  // .navOptionsTriggered {
+  // }
 
-  .navIcon {
+  // .navIcon {
     
-  }
+  // }
 }
 
-@media (min-width: 992px) {
+@include bigPad {
   %navArea {
     width: 100%;
   }
@@ -153,10 +144,6 @@ $logoRatio: 4rem;
   .navBackground {
     width: $navWidthTwo;
   } 
-  
-  .logoContainer {
-    width: $navWidthTwo;
-  }
 
   .navOption {
     width: $navWidthTwo;
@@ -167,22 +154,16 @@ $logoRatio: 4rem;
   }
 }
 
-@media (min-width: 1200px) {
+@include PC {
   .navBackground {
     width: $navWidthOne;
     padding: 0.5rem 2%;
   } 
 
-  .logoContainer {
-    width: 100%;
-    justify-content: flex-start;
-    padding-left: 0.5rem;
-  }
-
   .navOption {
     width: 100%;
   }
-  
+
   .navIcon {
     width: 100%;
   }

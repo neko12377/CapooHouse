@@ -6,6 +6,7 @@
   z-index: 0;
   padding: 0 2%;
   border: $R;
+  flex-direction: column;
 }
 
 .messageBlock {
@@ -14,7 +15,15 @@
   border: $G;
 }
 
-@media (max-width: 576px) {
+.copyRight {
+  width: 45%;
+  height: 100%;
+  overflow: scroll;
+  color: rgb(98, 218, 106);
+  margin: 1rem;
+}
+
+@include phone {
   .mainBody {
     min-width: 320px;
     max-width: 598px;
@@ -22,26 +31,26 @@
   }
 }
 
-@media (min-width: 577px) {
+@include bigPhone {
   .mainBody {
     min-width: 320px;
     max-width: 598px;
   }
 }
 
-@media (min-width: 768px) {
+@include pad {
   .mainBody {
     max-width: 598px;
   }
 }
 
-@media (min-width: 992px) {
+@include bigPad {
   .mainBody {
     max-width: 598px;
   }
 }
 
-@media (min-width: 1200px) {
+@include PC {
   .mainBody {
     max-width: 598px;
   }

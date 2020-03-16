@@ -1,4 +1,35 @@
 
+@mixin phone {
+  @media (max-width: 576px) {
+    @content;
+  }
+}
+
+@mixin bigPhone {
+  @media (min-width: 577px) {
+    @content;
+  }
+}
+
+@mixin pad {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin bigPad {
+  @media (min-width: 992px) {
+    @content;
+  }
+}
+
+@mixin PC {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+
 * {
   margin: 0;
   padding: 0;
@@ -30,6 +61,10 @@ div {
   width: 100%;
 }
 
+.notShow {
+  display: none;
+}
+
 @mixin userSelect($property) {
   -webkit-user-select: $property;
   -moz-user-select:  $property;
@@ -44,22 +79,19 @@ div {
   overflow: scroll;
   padding: 0 1%;
   border: solid 2px rgb(152, 51, 152);
-}
 
-@media (max-width: 576px) {
-  .mainConcept {
+  @include phone {
     flex-direction: column-reverse;
     align-items: center;
     padding: 0;
   }
-}
 
-@media (min-width: 577px) {
-  .mainConcept {
+  @include bigPhone {
     flex-direction: row;
     align-items: flex-start;
   }
 }
+
 
 @media (min-width: 768px) {
   
@@ -87,8 +119,10 @@ $P: solid 2px rgb(152, 51, 152);
 @import './SCSS/navList.scss';
 @import './SCSS/sideBody';
 
+
+
 // @media (max-width: 576px) {
-  
+ 
 // }
 
 // @media (min-width: 577px) {

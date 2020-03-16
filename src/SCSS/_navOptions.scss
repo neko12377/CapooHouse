@@ -2,57 +2,122 @@
   @extend %placeInTheMiddle;
   width: 100%;
   min-width: 53px;
-  padding: 0.2rem 1rem 0.2rem 0;
+  padding: 0;
   flex-direction: column;
   outline: none;
+  border-radius: 8px;
+}
+
+.blockOfOptionNListTriggered {
+  @extend %placeInTheMiddle;
+  width: 100%;
+  min-width: 53px;
+  padding: 0;
+  flex-direction: column;
+  outline: none;
+  border-radius: 8px;
+  background-color: rgb(113, 127, 208);
 }
 
 .navOptions {
   @extend %navBase;
+  min-height: 73px;
   justify-content: center;
+  align-items: flex-end;
   border-radius: 8px;
   color: rgb(255, 255, 255);
   outline: none;
 }
 
 .capooContainer {
+  align-items: flex-end;
+}
+
+.capooImage {
   width: 5rem;
 }
 
 .optionDescriptions {
-  writing-mode: vertical-lr;
   font-size: 1.2rem;
   align-items: flex-start;
   color: rgb(255, 255, 255);
   font-weight: 900;
 }
 
-@media (max-width: 576px) {
+.optionOptions {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  border-radius: 8px;
+  background-color: rgb(87, 103, 193);
+  option {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    font-size: 0.9rem;
+    border-radius: 8px;
+    padding: 0.5rem 0 0.5rem 10%;
+    color: white;
+    border-bottom: white 1px solid;
+    cursor: pointer;
+  }
+  option:hover {
+    background-color: rgb(249, 111, 6);
+  }
+}
+
+@include phone {
+  .capooImage {
+    width: 4.5rem;
+  }
+
+  .optionDescriptions {
+    display: none;
+  }
+
+  .optionOptions {
+    z-index: 100;
+  }
+
+  .blockOfOptionNListTriggered {
+    flex-direction: column-reverse;
+  }
+
+  .optionOptions option{
+    justify-content: center;
+    padding: 0.5rem 0;
+  }
+}
+
+@include bigPhone {
   .optionDescriptions {
     display: none;
   }
 }
 
-@media (min-width: 577px) {
+@include pad {
   .optionDescriptions {
     display: none;
   }
 }
 
-@media (min-width: 768px) {
+@include bigPad {
   .optionDescriptions {
     display: none;
   }
 }
 
-@media (min-width: 992px) {
-  .optionDescriptions {
-    display: none;
-  }
-}
-
-@media (min-width: 1200px) {
+@include PC {
   .optionDescriptions {
     display: flex;
+  }
+
+  .blockOfOptionNList {
+    padding: 0.2rem 0 0.2rem 0;
+    margin-right: 1rem;
+  }
+
+  .optionOptions option {
+    font-size: 1rem;
   }
 }

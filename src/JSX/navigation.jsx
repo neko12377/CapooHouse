@@ -3,13 +3,15 @@ import React from 'react';
 import NavIcons from './navIcons.jsx';
 import NavOptions from './optionIcons.jsx';
 import styles from '../index.scss';
-import logo from '../../images/Capoo_hold_its_feet.png';
 
 export default function NavigationBar(props) {
   const {
     iconArray, clickIcon,
-    optionArray, clickOption,
-    areaChange, clickBlank,
+    optionArray, touchOption,
+    areaChange,
+    capooImages,
+    animateCapoo, notAnimateCapoo,
+    optionOptionsArray,
   } = props;
 
   function createOptions(optionStyle, index) {
@@ -17,8 +19,12 @@ export default function NavigationBar(props) {
       <NavOptions
         key={`${index}O`}
         optionClass={optionStyle}
-        clickOption={() => clickOption(index)}
+        touchOption={() => touchOption(index)}
         optionIndex={index}
+        capooImages={capooImages}
+        animateCapoo={() => animateCapoo(index)}
+        notAnimateCapoo={notAnimateCapoo}
+        optionOptionsArray={optionOptionsArray}
       />
     );
   }
@@ -49,13 +55,14 @@ export default function NavigationBar(props) {
   return (
     <div className={styles.navBackground}>
       <div className={styles.navBar}>
-        <div className={styles.logoContainer}>
-          <img
-            src={logo}
-            alt="logo"
-            className={styles.logo}
-          />
-        </div>
+        {/* <div className={styles.logoContainer}> */}
+        {/* <img
+          id="capooDrag"
+          src={logo}
+          alt="logo"
+          className={styles.logo}
+        /> */}
+        {/* </div> */}
         <div
           className={styles.navOption}
           onClick={() => areaChange(0)}
@@ -65,14 +72,6 @@ export default function NavigationBar(props) {
         >
           {groupOptions()}
         </div>
-        <div
-          className={styles.middleBlank}
-          onClick={clickBlank}
-          onKeyPress={clickBlank}
-          role="button"
-          tabIndex={0}
-          aria-label="clickBlank"
-        />
         <div
           className={styles.navIcon}
           onClick={() => areaChange(1)}

@@ -17,7 +17,6 @@
 }
 
 %navBase:hover {
-  background-color: rgb(113, 127, 208);
   cursor: pointer;
 }
 
@@ -34,4 +33,22 @@
 .navIcons2 {
   @extend %navBase;
   color: rgb(0, 187, 255);
+}
+
+@include phone {
+}
+
+@include bigPhone {
+}
+
+@include pad {
+ 
+}
+
+@include bigPad {
+ 
+}
+
+@include PC {
+
 }
