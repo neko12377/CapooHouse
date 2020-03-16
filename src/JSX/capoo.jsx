@@ -191,6 +191,7 @@ export default function Capoo() {
         capooDrag.style.left = `${x}px`;
         capooDrag.style.top = `${y}px`;
       } else {
+        event.preventDefault();
         let x = event.touches['0'].clientX - startX;
         let y = event.touches['0'].clientY - startY;
         x = Math.max(Math.min(x, dragableArea.right), dragableArea.left);
