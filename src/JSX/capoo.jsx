@@ -212,9 +212,6 @@ export default function Capoo() {
     }
 
     function dragStart(event) {
-      if (document.documentElement.clientWidth < 577) {
-        capooDrag.style.top = '';
-      }
       if (!(navigator.maxTouchPoints)) {
         event.preventDefault();
         startX = event.clientX - capooDrag.offsetLeft;
@@ -222,7 +219,7 @@ export default function Capoo() {
         document.documentElement.addEventListener('mousemove', move);
         document.documentElement.addEventListener('mouseup', stop);
       } else {
-        startX = event.touches['0'].clientX - capooDrag.offsetLeft;
+        startX = event.touches['0'].clientX - event.touches['0'].target.offsetLeft;
         startY = event.touches['0'].clientY - capooDrag.offsetTop;
         document.documentElement.addEventListener('touchmove', move);
         document.documentElement.addEventListener('touchend', stop);
