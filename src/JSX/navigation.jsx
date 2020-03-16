@@ -22,7 +22,7 @@ export default function NavigationBar(props) {
         touchOption={() => touchOption(index)}
         optionIndex={index}
         capooImages={capooImages}
-        animateCapoo={() => animateCapoo(index)}
+        animateCapoo={(event) => animateCapoo(index, event)}
         notAnimateCapoo={notAnimateCapoo}
         optionOptionsArray={optionOptionsArray}
       />

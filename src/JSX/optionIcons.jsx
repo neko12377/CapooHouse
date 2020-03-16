@@ -75,7 +75,7 @@ export default function NavOption(props) {
   return (
     <div
       className={optionClass}
-      onMouseOver={animateCapoo}
+      onMouseOver={(event) => animateCapoo(event)}
       onMouseOut={notAnimateCapoo}
       onFocus={animateCapoo}
       onBlur={notAnimateCapoo}
