@@ -228,7 +228,7 @@ export default function Capoo() {
       } else {
         startX = event.touches['0'].clientX - event.touches['0'].target.offsetLeft;
         startY = event.touches['0'].clientY - capooDrag.offsetTop;
-        document.documentElement.addEventListener('touchmove', move);
+        document.documentElement.addEventListener('touchmove', move, { passive: false });
         document.documentElement.addEventListener('touchend', stop);
       }
     }
