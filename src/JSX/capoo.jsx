@@ -108,7 +108,7 @@ export default function Capoo() {
     setIconArray(iconArrayCopy);
   }
 
-  function touchOption(indexOfOption) {
+  function clickOption(indexOfOption) {
     const optionArrayCopy = optionArray.slice();
     const optionOptionsArrayCopy = optionOptionsArray.slice();
     let capooImagesCopy = capooImages.slice();
@@ -185,6 +185,11 @@ export default function Capoo() {
     let capooX;
     let capooY;
 
+    function preventD(event) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+
     function move(event) {
       if (!navigator.maxTouchPoints) {
         let x = event.clientX - startX;
@@ -195,9 +200,7 @@ export default function Capoo() {
         capooDrag.style.top = `${y}px`;
       } else {
         event.preventDefault();
-        document.body.addEventListener('move', () => {
-          event.preventDefault();
-        }, false);
+        // document.body.addEventListener('touchmove', preventD, { passive: false });
         capooX = event.touches['0'].clientX - startX;
         capooY = event.touches['0'].clientY - startY;
         capooX = Math.max(Math.min(capooX, dragableArea.right), dragableArea.left);
@@ -210,7 +213,7 @@ export default function Capoo() {
         document.documentElement.removeEventListener('mousemove', move);
         document.documentElement.removeEventListener('mouseup', stop);
       } else {
-        document.documentElement.addEventListener('touchmove', move);
+        document.documentElement.removeEventListener('touchmove', move);
         document.documentElement.removeEventListener('touchend', stop);
       }
     }
@@ -234,7 +237,7 @@ export default function Capoo() {
       setInterval(() => {
         capooDrag.style.left = `${capooX}px`;
         capooDrag.style.top = `${capooY}px`;
-      }, 10);
+      }, 20);
     }
 
     if (!(navigator.maxTouchPoints)) {
@@ -243,9 +246,9 @@ export default function Capoo() {
       capooDrag.addEventListener('touchstart', dragStart);
       optimizeDrag();
     }
-    document.body.addEventListener('touchmove', (event) => {
-      event.preventDefault();
-    }, false);
+    // document.body.addEventListener('touchmove', (event) => {
+    //   event.preventDefault();
+    // }, false);
 
     return (() => {
       capooDrag.removeEventListener('mousedown', dragStart);
@@ -267,7 +270,7 @@ export default function Capoo() {
         iconArray={iconArray}
         clickIcon={clickIcon}
         optionArray={optionArray}
-        touchOption={touchOption}
+        clickOption={clickOption}
         capooImages={capooImages}
         animateCapoo={animateCapoo}
         notAnimateCapoo={notAnimateCapoo}

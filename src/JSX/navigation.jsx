@@ -7,7 +7,7 @@ import styles from '../index.scss';
 export default function NavigationBar(props) {
   const {
     iconArray, clickIcon,
-    optionArray, touchOption,
+    optionArray, clickOption,
     areaChange,
     capooImages,
     animateCapoo, notAnimateCapoo,
@@ -19,7 +19,7 @@ export default function NavigationBar(props) {
       <NavOptions
         key={`${index}O`}
         optionClass={optionStyle}
-        touchOption={() => touchOption(index)}
+        clickOption={() => clickOption(index)}
         optionIndex={index}
         capooImages={capooImages}
         animateCapoo={(event) => animateCapoo(index, event)}

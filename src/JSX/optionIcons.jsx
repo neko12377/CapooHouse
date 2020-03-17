@@ -15,7 +15,7 @@ import styles from '../index.scss';
 export default function NavOption(props) {
   const {
     optionClass,
-    touchOption,
+    clickOption,
     optionIndex,
     capooImages,
     animateCapoo,
@@ -82,8 +82,8 @@ export default function NavOption(props) {
     >
       <div
         className={styles.navOptions}
-        onClick={touchOption}
-        onKeyPress={touchOption}
+        onClick={clickOption}
+        onKeyPress={clickOption}
         role="button"
         aria-label="navOption"
         tabIndex={0}
