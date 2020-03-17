@@ -213,7 +213,7 @@ export default function Capoo() {
         document.documentElement.removeEventListener('mousemove', move);
         document.documentElement.removeEventListener('mouseup', stop);
       } else {
-        document.documentElement.removeEventListener('touchmove', move);
+        document.documentElement.removeEventListener('touchmove', move, { passive: false });
         document.documentElement.removeEventListener('touchend', stop);
       }
     }
