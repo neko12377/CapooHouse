@@ -182,6 +182,9 @@ export default function Capoo() {
     let startX;
     let startY;
 
+    let capooX;
+    let capooY;
+
     function move(event) {
       if (!navigator.maxTouchPoints) {
         let x = event.clientX - startX;
@@ -192,12 +195,13 @@ export default function Capoo() {
         capooDrag.style.top = `${y}px`;
       } else {
         event.preventDefault();
-        let x = event.touches['0'].clientX - startX;
-        let y = event.touches['0'].clientY - startY;
-        x = Math.max(Math.min(x, dragableArea.right), dragableArea.left);
-        y = Math.max(Math.min(y, dragableArea.bottom), dragableArea.top);
-        capooDrag.style.left = `${x}px`;
-        capooDrag.style.top = `${y}px`;
+        document.body.addEventListener('move', () => {
+          event.preventDefault();
+        }, false);
+        capooX = event.touches['0'].clientX - startX;
+        capooY = event.touches['0'].clientY - startY;
+        capooX = Math.max(Math.min(capooX, dragableArea.right), dragableArea.left);
+        capooY = Math.max(Math.min(capooY, dragableArea.bottom), dragableArea.top);
       }
     }
 
@@ -221,14 +225,23 @@ export default function Capoo() {
       } else {
         startX = event.touches['0'].clientX - event.touches['0'].target.offsetLeft;
         startY = event.touches['0'].clientY - capooDrag.offsetTop;
-        document.documentElement.addEventListener('touchmove', move, { passive: false });
+        document.documentElement.addEventListener('touchmove', move);
         document.documentElement.addEventListener('touchend', stop);
       }
     }
+
+    function optimizeDrag() {
+      setInterval(() => {
+        capooDrag.style.left = `${capooX}px`;
+        capooDrag.style.top = `${capooY}px`;
+      }, 10);
+    }
+
     if (!(navigator.maxTouchPoints)) {
       capooDrag.addEventListener('mousedown', dragStart);
     } else {
       capooDrag.addEventListener('touchstart', dragStart);
+      optimizeDrag();
     }
     document.body.addEventListener('touchmove', (event) => {
       event.preventDefault();
@@ -237,6 +250,7 @@ export default function Capoo() {
     return (() => {
       capooDrag.removeEventListener('mousedown', dragStart);
       capooDrag.removeEventListener('touchstart', dragStart);
+      clearInterval(optimizeDrag);
     });
   }, []);
 
