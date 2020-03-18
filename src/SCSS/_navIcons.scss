@@ -1,23 +1,10 @@
 .blockOfIconNList {
-  @extend %placeInTheMiddle;
+  @extend %plm;
   width: 100%;
   min-width: 53px;
   padding: 0.5rem 0;
   flex-direction: column;;
   border: $R;
-}
-
-%navBase {
-  @extend %placeInTheMiddle;
-  width: 100%;
-  min-width: 2rem;
-  outline: none;
-  font-size: 2rem;
-  justify-content: flex-start;
-}
-
-%navBase:hover {
-  cursor: pointer;
 }
 
 .navIcons {

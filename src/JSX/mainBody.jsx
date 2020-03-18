@@ -1,8 +1,35 @@
 import React from 'react';
+import InformationBlock from './informationBlock.jsx';
 import styles from '../index.scss';
 
 export default function Mainbody(props) {
-  const { clickBlank } = props;
+  const {
+    clickBlank,
+    logo,
+  } = props;
+
+  const contentArray = [
+    'ooo', 'qqq', 'ppp', 'rrr', 'sss', 'ttt', 'uuu', 'vvv',
+  ];
+
+  function deliverInformToBlocks(content, index) {
+    return (
+      <InformationBlock
+        key={`informBlock${index}`}
+        content={content}
+        contentArrayIndex={index}
+      />
+    );
+  }
+
+  function clusterOfInformBlocks() {
+    return (
+      contentArray.map(
+        (content, index) => deliverInformToBlocks(content, index),
+      )
+    );
+  }
+
   return (
     <div
       className={styles.mainBody}
@@ -12,11 +39,18 @@ export default function Mainbody(props) {
       tabIndex="0"
       aria-label="mainBody"
     >
+      <div className={styles.header}>
+        <img
+          id="capooDrag"
+          src={logo}
+          alt="logo"
+          className={styles.logo}
+        />
+      </div>
       <div className={styles.messageBlock} />
-      <p className={styles.copyRight}>
-        {`© Copyright Kasper Chen 2020.
-          © Copyright of Images belongs to Yara(亞拉)`}
-      </p>
+      <div className={styles.informSection}>
+        {clusterOfInformBlocks()}
+      </div>
     </div>
   );
 }

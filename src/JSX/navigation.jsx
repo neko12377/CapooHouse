@@ -54,32 +54,26 @@ export default function NavigationBar(props) {
 
   return (
     <div className={styles.navBackground}>
-      <div className={styles.navBar}>
-        {/* <div className={styles.logoContainer}> */}
-        {/* <img
-          id="capooDrag"
-          src={logo}
-          alt="logo"
-          className={styles.logo}
-        /> */}
-        {/* </div> */}
-        <div
-          className={styles.navOption}
-          onClick={() => areaChange(0)}
-          onKeyPress={areaChange}
-          role="button"
-          tabIndex={0}
-        >
-          {groupOptions()}
-        </div>
-        <div
-          className={styles.navIcon}
-          onClick={() => areaChange(1)}
-          onKeyPress={areaChange}
-          role="button"
-          tabIndex={0}
-        >
-          {groupIcons()}
+      <div className={styles.navBackgroundfixed}>
+        <div className={styles.navBar}>
+          <div
+            className={styles.navOption}
+            onClick={() => areaChange(0)}
+            onKeyPress={areaChange}
+            role="button"
+            tabIndex={0}
+          >
+            {groupOptions()}
+          </div>
+          <div
+            className={styles.navIcon}
+            onClick={() => areaChange(1)}
+            onKeyPress={areaChange}
+            role="button"
+            tabIndex={0}
+          >
+            {groupIcons()}
+          </div>
         </div>
       </div>
     </div>

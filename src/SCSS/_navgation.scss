@@ -1,53 +1,46 @@
-$navWidthOne: 235px;
-$navWidthTwo: 86px;
+$imagesWithContext: 235px;
+$imagesWithoutContext: 86px;
 
 .navBackground {
-  width: $navWidthOne;
-  flex-direction: column;
-  min-width: $navWidthTwo;
-  padding: 0.5rem 0;
-  border: $B;
+  @extend %dfc;
+  min-width: $imagesWithoutContext;
   @include userSelect(none);
+  border: $B;
+}
+
+.navBackgroundfixed {
+  @extend .navBackground;
+  padding: 0.5rem 0;
+  position: fixed;
 }
 
 .navBar {
-  @extend %placeInTheMiddle;
+  @extend %plm;
+  position: relative;
   width: 100%;
   flex-direction: column;
 }
 
 //distinct area of options and icons
 %navArea {
-  @extend %placeInTheMiddle;
+  @extend %plm;
   outline: none;
   margin: 0 0 1rem 0;
   justify-content: space-between;
 }
 
-$logoRatio: 4rem;
-
-.logo {
-  position: fixed;
-  bottom: 1rem;
-  right: 1rem;
-  height: $logoRatio;
-  width: 1.046 * $logoRatio;
-  z-index: 1000;
-  box-shadow:  2px 5px 10px rgb(48, 48, 1);
-  border-radius: 50%;
-  background-image: 
-    linear-gradient(
-      160deg,
-      rgb(240, 239, 196) 0%,
-      rgb(245, 242, 134) 40%,
-      rgb(154, 150, 45) 70%,
-      rgb(103, 103, 11) 100%,
-    );
+%navBase {
+  @extend %plm;
+  min-width: 2rem;
+  outline: none;
+  font-size: 2rem;
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .navOption {
   @extend %navArea;
-  width: 100%;
   flex-direction: column;
   align-items: flex-end;
   outline: none;
@@ -55,16 +48,16 @@ $logoRatio: 4rem;
 
 .navIcon {
   @extend %navArea;
-  width: 100%;
 }
 
 @include phone {
-  .navBackground {
-    width: 100%;
+  .navBackgroundfixed {
     position: fixed;
     bottom: 0;
+    left: 0;
     justify-items: flex-end;
     padding: 0;
+    margin: 0;
   }
 
   .navBar {
@@ -73,11 +66,6 @@ $logoRatio: 4rem;
 
   %navArea {
     width: 100%;
-  }
-
-  .logo {
-    right: 0.5rem;
-    bottom: 90px;
   }
 
   .navOption {
@@ -96,12 +84,11 @@ $logoRatio: 4rem;
   }
 
   .navBackground {
-    width: $navWidthTwo;
+    width: $imagesWithoutContext;
   }
 
-  .logo {
-    left: 50%;
-    top: 4rem;
+  .navBackgroundfixed {
+    top: 0;
   }
 
   .navOption {
@@ -121,19 +108,8 @@ $logoRatio: 4rem;
   }
 
   .navBackground {
-    width: $navWidthTwo;
+    width: $imagesWithoutContext;
   }
-
-  // .navOption {
-
-  // }
-
-  // .navOptionsTriggered {
-  // }
-
-  // .navIcon {
-    
-  // }
 }
 
 @include bigPad {
@@ -142,23 +118,26 @@ $logoRatio: 4rem;
   }
 
   .navBackground {
-    width: $navWidthTwo;
+    width: $imagesWithoutContext;
   } 
 
   .navOption {
-    width: $navWidthTwo;
+    width: $imagesWithoutContext;
   }
   
   .navIcon {
-    width: $navWidthTwo;
+    width: $imagesWithoutContext;
   }
 }
 
 @include PC {
   .navBackground {
-    width: $navWidthOne;
-    padding: 0.5rem 2%;
+    width: $imagesWithContext;
   } 
+
+  .navBackgroundfixed {
+    padding: 0.5rem 2%;
+  }
 
   .navOption {
     width: 100%;

@@ -1,0 +1,130 @@
+$R: solid 2px rgb(240, 80, 80);
+$O: solid 2px rgb(255, 190, 68);
+$G: solid 2px rgb(51, 148, 98);
+$B: solid 2px rgb(65, 65, 244);
+$P: solid 2px rgb(152, 51, 152);
+
+$MainColor: rgb(233, 128, 109);
+$ComplementaryColor: rgb(113, 127, 208);
+$ThirdColor: #86e96d;
+
+@mixin userSelect($property) {
+  -webkit-user-select: $property;
+  -moz-user-select:  $property;
+  -ms-user-select: $property;
+}
+
+@mixin boxSizing($p) {
+  -webkit-box-sizing: $p;
+  -moz-box-sizing: $p;
+  box-sizing: $p;
+}
+
+@mixin phone {
+  @media (max-width: 576px) {
+    @content;
+  }
+}
+
+@mixin bigPhone {
+  @media (min-width: 577px) {
+    @content;
+  }
+}
+
+@mixin pad {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin bigPad {
+  @media (min-width: 992px) {
+    @content;
+  }
+}
+
+@mixin PC {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+  @include boxSizing(border-box);
+}
+
+%df {
+  display: flex;
+  width: 100%;
+}
+
+%dfrr {
+  @extend %df;
+  flex-direction: row-reverse;
+}
+
+%dfc {
+  @extend %df;
+  flex-direction: column;
+}
+
+%dfcr {
+  @extend %df;
+  flex-direction: column-reverse;
+}
+
+%plm {
+  @extend %df;
+  justify-content: center;
+  align-items: center;
+}
+
+%plf {
+  @extend %df;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+%plt {
+  @extend %df;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+%ple {
+  @extend %df;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+%plb {
+  @extend %df;
+  justify-content: center;
+  align-items: bottom;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  @extend %plm;
+  align-items: flex-start;
+  // background-color: rgb(118, 200, 229);
+  background-color: $MainColor;
+  // background-image: linear-gradient(90deg, #8b4fc7 0%, rgb(122, 162, 222) 30%, #d39d5b 100%);
+}
+
+div {
+  @extend %plm;
+  width: 100%;
+}
+
+.notShow {
+  display: none;
+}
+

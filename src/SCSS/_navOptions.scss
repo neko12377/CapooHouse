@@ -1,5 +1,5 @@
 .blockOfOptionNList {
-  @extend %placeInTheMiddle;
+  @extend %plm;
   width: 100%;
   min-width: 53px;
   padding: 0;
@@ -9,13 +9,7 @@
 }
 
 .blockOfOptionNListTriggered {
-  @extend %placeInTheMiddle;
-  width: 100%;
-  min-width: 53px;
-  padding: 0;
-  flex-direction: column;
-  outline: none;
-  border-radius: 8px;
+  @extend .blockOfOptionNList;
   background-color: rgb(113, 127, 208);
 }
 
@@ -60,10 +54,11 @@
     color: white;
     border-bottom: white 1px solid;
     cursor: pointer;
+    &:hover {
+      background-color: rgb(249, 111, 6);
+    }
   }
-  option:hover {
-    background-color: rgb(249, 111, 6);
-  }
+ 
 }
 
 @include phone {

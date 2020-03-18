@@ -1,0 +1,20 @@
+.mainConcept {
+  @extend %plt;
+  overflow: scroll;
+  padding: 0 1%;
+  border: solid 5px rgb(152, 51, 152);
+
+  @include phone {
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0;
+    height: 100vh;
+    overflow: scroll;
+  }
+
+  @include bigPhone {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}

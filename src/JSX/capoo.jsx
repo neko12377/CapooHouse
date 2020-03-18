@@ -185,11 +185,6 @@ export default function Capoo() {
     let capooX;
     let capooY;
 
-    function preventD(event) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
-
     function move(event) {
       if (!navigator.maxTouchPoints) {
         let x = event.clientX - startX;
@@ -219,6 +214,7 @@ export default function Capoo() {
     }
 
     function dragStart(event) {
+      capooDrag.style.position = 'absolute';
       if (!(navigator.maxTouchPoints)) {
         event.preventDefault();
         startX = event.clientX - capooDrag.offsetLeft;
@@ -230,6 +226,7 @@ export default function Capoo() {
         startY = event.touches['0'].clientY - capooDrag.offsetTop;
         document.documentElement.addEventListener('touchmove', move, { passive: false });
         document.documentElement.addEventListener('touchend', stop);
+        console.log(event.clientX);
       }
     }
 
@@ -246,9 +243,6 @@ export default function Capoo() {
       capooDrag.addEventListener('touchstart', dragStart);
       optimizeDrag();
     }
-    // document.body.addEventListener('touchmove', (event) => {
-    //   event.preventDefault();
-    // }, false);
 
     return (() => {
       capooDrag.removeEventListener('mousedown', dragStart);
@@ -259,12 +253,6 @@ export default function Capoo() {
 
   return (
     <div className={styles.mainConcept}>
-      <img
-        id="capooDrag"
-        src={logos.logo}
-        alt="logo"
-        className={styles.logo}
-      />
       <NavigationBar
         areaChange={areaChange}
         iconArray={iconArray}
@@ -277,6 +265,7 @@ export default function Capoo() {
         optionOptionsArray={optionOptionsArray}
       />
       <Mainbody
+        logo={logos.logo}
         clickBlank={clickBlank}
       />
       <SideBody />
