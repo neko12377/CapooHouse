@@ -214,7 +214,7 @@ export default function Capoo() {
     }
 
     function dragStart(event) {
-      capooDrag.style.position = 'absolute';
+      capooDrag.style.position = 'fixed';
       if (!(navigator.maxTouchPoints)) {
         event.preventDefault();
         startX = event.clientX - capooDrag.offsetLeft;
@@ -226,7 +226,6 @@ export default function Capoo() {
         startY = event.touches['0'].clientY - capooDrag.offsetTop;
         document.documentElement.addEventListener('touchmove', move, { passive: false });
         document.documentElement.addEventListener('touchend', stop);
-        console.log(event.clientX);
       }
     }
 
@@ -237,8 +236,13 @@ export default function Capoo() {
       }, 20);
     }
 
+    function goHome() {
+      capooDrag.style.cssText = "position: '', left: '', top: ''";
+    }
+
     if (!(navigator.maxTouchPoints)) {
       capooDrag.addEventListener('mousedown', dragStart);
+      capooDrag.addEventListener('dblclick', goHome);
     } else {
       capooDrag.addEventListener('touchstart', dragStart);
       optimizeDrag();

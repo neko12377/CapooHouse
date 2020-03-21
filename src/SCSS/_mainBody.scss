@@ -10,7 +10,6 @@
 
 .header {
   @extend %df;
-  height: 5rem;
   justify-content: space-between;
   padding: 0 2%;
 }
@@ -34,6 +33,7 @@ $logoRatio: 4rem;
 }
 
 .messageBlock {
+  margin-top: 1rem;
   width: 100%;
   height: 200px;
   border: $G;

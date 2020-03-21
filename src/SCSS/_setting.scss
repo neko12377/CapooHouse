@@ -55,6 +55,7 @@ $ThirdColor: #86e96d;
   margin: 0;
   padding: 0;
   @include boxSizing(border-box);
+  border: none;
 }
 
 %df {
