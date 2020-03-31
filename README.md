@@ -1,3 +1,3 @@
-# This is a Fan made site of Capoo #
+## This is a Fan made site of Capoo ##
 
-[Go here](https://neko12377.github.io/CapooHouse)
+# [Go here](https://neko12377.github.io/CapooHouse) #
