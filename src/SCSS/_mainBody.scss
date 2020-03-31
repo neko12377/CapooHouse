@@ -51,6 +51,7 @@
 $logoRatio: 4rem;
 
 .logo {
+  display: none;
   height: $logoRatio;
   width: 1.046 * $logoRatio;
   z-index: 1000;
@@ -83,6 +84,7 @@ $logoRatio: 4rem;
 }
 
 .inputArea {
+  display: flex;
   width: 85%;
   height: 100%;
   padding: 0.5rem 1.5rem 0.5rem 0;
@@ -145,7 +147,7 @@ $logoRatio: 4rem;
   width: 40%;
   justify-content: flex-end;
   padding-bottom: 4px;
-  button {
+  .button {
     width: 80px;
     height: 2.5rem;
     color: white;
@@ -166,7 +168,7 @@ $logoRatio: 4rem;
 
 .postButtonClicked {
   @extend .postButton;
-  button {
+  .button {
     width: 80px;
     height: 2.5rem;
     color: rgb(199, 190, 190);
@@ -224,9 +226,7 @@ $logoRatio: 4rem;
   }
 
   .logo {
-    position: fixed;
-    top: 0;
-    right: 0;
+    display: none;
   }
 
   .informSection {

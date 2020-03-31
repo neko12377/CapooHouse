@@ -13,29 +13,37 @@ export default function Mainbody(props) {
   const contentArray = [
     (
       <p>
-        lllaaaasd
+        商店可以連結到:
         {'\n'}
-        ooq
+        咖波屋
         {'\n'}
-        sjfldsi
+        奶泡貓咖啡
         {'\n'}
-        sdlfjie
-        {'\n'}
-        jsdilafj
       </p>
     ),
-    'qqq',
-    'ppp',
-    'rrr',
-    'sss',
-    'ttt',
-    'uuu',
-    'vvv',
     (
       <p>
-        lllaaaasd
-        {'\n'}
-        ooq
+        <img
+          src={iconsNimages.universeNo1Cuteness}
+          alt="universe_No_1_cuteness"
+        />
+        <div>
+          咖波超可愛
+        </div>
+      </p>
+    ),
+    '還在學怎麼串資料庫的API',
+    '所以要用到資料庫的功能',
+    '都還不能用',
+    (
+      <img
+        src={iconsNimages.laughNSilence}
+        alt="universe_No_1_cuteness"
+      />
+    ),
+    (
+      <p>
+        繼續努力研究
       </p>
     ),
   ];
@@ -47,6 +55,13 @@ export default function Mainbody(props) {
   }
 
   function threapeuticUp() {
+    setTimeout(() => {
+      setButtonStyle(styles.postButton);
+    }, 300);
+  }
+
+  function therapeuticClick() {
+    setButtonStyle(styles.postButtonClicked);
     setTimeout(() => {
       setButtonStyle(styles.postButton);
     }, 300);
@@ -99,7 +114,7 @@ export default function Mainbody(props) {
             />
           </div>
         </div>
-        <div className={styles.inputArea}>
+        <form className={styles.inputArea}>
           <input
             className={styles.postContent}
             placeholder="Share with Capoo"
@@ -121,14 +136,17 @@ export default function Mainbody(props) {
             </div>
             <div className={buttonStyle}>
               <button
+                className={styles.button}
+                type="submit"
                 onMouseDown={threapeuticDown}
                 onMouseUp={threapeuticUp}
+                onClick={therapeuticClick}
               >
                 caPOo
               </button>
             </div>
           </div>
-        </div>
+        </form>
       </div>
       <div className={styles.compartment} />
       <div className={styles.informSection}>

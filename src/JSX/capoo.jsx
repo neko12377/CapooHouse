@@ -170,91 +170,103 @@ export default function Capoo() {
     }
   }
 
+  // useEffect(() => {
+  //   const capooDrag = document.getElementById('capooDrag');
+  //   const capooDragCoordinate = capooDrag.getBoundingClientRect();
+  //   const dragableArea = {
+  //     left: 0,
+  //     top: 0,
+  //     right: document.documentElement.clientWidth
+  //       - capooDragCoordinate.width,
+  //     bottom: document.documentElement.scrollHeight
+  //       - capooDragCoordinate.height,
+  //   };
+
+  //   let startX;
+  //   let startY;
+
+  //   let capooX;
+  //   let capooY;
+
+  //   function move(event) {
+  //     if (!navigator.maxTouchPoints) {
+  //       let x = event.clientX - startX;
+  //       let y = event.clientY - startY;
+  //       x = Math.max(Math.min(x, dragableArea.right), dragableArea.left);
+  //       y = Math.max(Math.min(y, dragableArea.bottom), dragableArea.top);
+  //       capooDrag.style.left = `${x}px`;
+  //       capooDrag.style.top = `${y}px`;
+  //     } else {
+  //       event.preventDefault();
+  //       capooX = event.touches['0'].clientX - startX;
+  //       capooY = event.touches['0'].clientY - startY;
+  //       capooX = Math.max(Math.min(capooX, dragableArea.right), dragableArea.left);
+  //       capooY = Math.max(Math.min(capooY, dragableArea.bottom), dragableArea.top);
+  //     }
+  //   }
+
+  //   function stop() {
+  //     if (!(navigator.maxTouchPoints)) {
+  //       document.documentElement.removeEventListener('mousemove', move);
+  //       document.documentElement.removeEventListener('mouseup', stop);
+  //     } else {
+  //       document.documentElement.removeEventListener('touchmove', move, { passive: false });
+  //       document.documentElement.removeEventListener('touchend', stop);
+  //     }
+  //   }
+
+  //   function dragStart(event) {
+  //     capooDrag.style.position = 'fixed';
+  //     if (!(navigator.maxTouchPoints)) {
+  //       event.preventDefault();
+  //       startX = event.clientX - capooDrag.offsetLeft;
+  //       startY = event.clientY - capooDrag.offsetTop;
+  //       document.documentElement.addEventListener('mousemove', move);
+  //       document.documentElement.addEventListener('mouseup', stop);
+  //     } else {
+  //       startX = event.touches['0'].clientX - event.touches['0'].target.offsetLeft;
+  //       startY = event.touches['0'].clientY - capooDrag.offsetTop;
+  //       document.documentElement.addEventListener('touchmove', move, { passive: false });
+  //       document.documentElement.addEventListener('touchend', stop);
+  //     }
+  //   }
+
+  //   function optimizeDrag() {
+  //     setInterval(() => {
+  //       capooDrag.style.left = `${capooX}px`;
+  //       capooDrag.style.top = `${capooY}px`;
+  //     }, 20);
+  //   }
+
+  //   function goHome() {
+  //     capooDrag.style.cssText = "position: '', left: '', top: ''";
+  //   }
+
+  //   if (!(navigator.maxTouchPoints)) {
+  //     capooDrag.addEventListener('mousedown', dragStart);
+  //     capooDrag.addEventListener('dblclick', goHome);
+  //   } else {
+  //     capooDrag.addEventListener('touchstart', dragStart);
+  //     optimizeDrag();
+  //   }
+
+  //   return (() => {
+  //     capooDrag.removeEventListener('mousedown', dragStart);
+  //     capooDrag.removeEventListener('touchstart', dragStart);
+  //     clearInterval(optimizeDrag);
+  //   });
+  // }, []);
+
   useEffect(() => {
-    const capooDrag = document.getElementById('capooDrag');
-    const capooDragCoordinate = capooDrag.getBoundingClientRect();
-    const dragableArea = {
-      left: 0,
-      top: 0,
-      right: document.documentElement.clientWidth
-        - capooDragCoordinate.width,
-      bottom: document.documentElement.scrollHeight
-        - capooDragCoordinate.height,
-    };
-
-    let startX;
-    let startY;
-
-    let capooX;
-    let capooY;
-
-    function move(event) {
-      if (!navigator.maxTouchPoints) {
-        let x = event.clientX - startX;
-        let y = event.clientY - startY;
-        x = Math.max(Math.min(x, dragableArea.right), dragableArea.left);
-        y = Math.max(Math.min(y, dragableArea.bottom), dragableArea.top);
-        capooDrag.style.left = `${x}px`;
-        capooDrag.style.top = `${y}px`;
-      } else {
-        event.preventDefault();
-        capooX = event.touches['0'].clientX - startX;
-        capooY = event.touches['0'].clientY - startY;
-        capooX = Math.max(Math.min(capooX, dragableArea.right), dragableArea.left);
-        capooY = Math.max(Math.min(capooY, dragableArea.bottom), dragableArea.top);
-      }
+    function moveWithCursor(event) {
+      const capooDrag = document.getElementById('capooDrag');
+      capooDrag.style.display = 'flex';
+      capooDrag.style.position = 'absolute';
+      capooDrag.style.left = `${event.pageX + 8}px`;
+      capooDrag.style.top = `${event.pageY + 8}px`;
     }
 
-    function stop() {
-      if (!(navigator.maxTouchPoints)) {
-        document.documentElement.removeEventListener('mousemove', move);
-        document.documentElement.removeEventListener('mouseup', stop);
-      } else {
-        document.documentElement.removeEventListener('touchmove', move, { passive: false });
-        document.documentElement.removeEventListener('touchend', stop);
-      }
-    }
-
-    function dragStart(event) {
-      capooDrag.style.position = 'fixed';
-      if (!(navigator.maxTouchPoints)) {
-        event.preventDefault();
-        startX = event.clientX - capooDrag.offsetLeft;
-        startY = event.clientY - capooDrag.offsetTop;
-        document.documentElement.addEventListener('mousemove', move);
-        document.documentElement.addEventListener('mouseup', stop);
-      } else {
-        startX = event.touches['0'].clientX - event.touches['0'].target.offsetLeft;
-        startY = event.touches['0'].clientY - capooDrag.offsetTop;
-        document.documentElement.addEventListener('touchmove', move, { passive: false });
-        document.documentElement.addEventListener('touchend', stop);
-      }
-    }
-
-    function optimizeDrag() {
-      setInterval(() => {
-        capooDrag.style.left = `${capooX}px`;
-        capooDrag.style.top = `${capooY}px`;
-      }, 20);
-    }
-
-    function goHome() {
-      capooDrag.style.cssText = "position: '', left: '', top: ''";
-    }
-
-    if (!(navigator.maxTouchPoints)) {
-      capooDrag.addEventListener('mousedown', dragStart);
-      capooDrag.addEventListener('dblclick', goHome);
-    } else {
-      capooDrag.addEventListener('touchstart', dragStart);
-      optimizeDrag();
-    }
-
-    return (() => {
-      capooDrag.removeEventListener('mousedown', dragStart);
-      capooDrag.removeEventListener('touchstart', dragStart);
-      clearInterval(optimizeDrag);
-    });
+    document.documentElement.addEventListener('mousemove', moveWithCursor);
   }, []);
 
   return (

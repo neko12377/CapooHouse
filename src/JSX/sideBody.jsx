@@ -50,6 +50,8 @@ export default function SideBody() {
           © Copyright Kasper Chen 2020.
           {'\n'}
           © Copyright of Images belongs to Yara(亞拉)
+          <br />
+          粉絲製作，未得到任何授權
         </p>
       </div>
     </div>

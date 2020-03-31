@@ -31,13 +31,12 @@ export default function SettingSection(props) {
 
   function creatListItems(item) {
     return (
-      <option
-        key={`${item}Z`}
-        onClick={stopBubbling}
-        onKeyPress={stopBubbling}
+      <a
+        key={`${item}_useOption`}
+        href="#"
       >
         {item}
-      </option>
+      </a>
     );
   }
 

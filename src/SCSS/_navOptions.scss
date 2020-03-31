@@ -59,15 +59,16 @@
   flex-direction: column;
   border-radius: 8px;
   background-color: #3f51b7;
-  option {
+  a {
     width: 100%;
     display: flex;
     justify-content: flex-start;
-    font-size: 0.9rem;
+    font-size: 1rem;
     border-radius: 8px;
     padding: 0.5rem 0 0.5rem 10%;
     color: white;
     border-bottom: white 1px solid;
+    text-decoration: none;
     cursor: pointer;
     &:hover {
       background-color: #71d0c2;

@@ -27,7 +27,42 @@ export default function NavOption(props) {
     ['每日咖波幣', '好運咖波'], // 1
     ['活動通知', '回覆通知'], // 2
     ['社群一', '社群二'], // 3
-    ['貼圖一', '貼圖二', '貼圖三'], // 4
+    [
+      (
+        <p>
+          貓貓蟲-咖波
+          <br />
+          超可愛訊息貼圖
+        </p>
+      ),
+      (
+        <p>
+          貓貓蟲-咖波
+          <br />
+          可愛好用篇
+        </p>
+      ),
+      (
+        <p>
+          貓貓蟲-咖波
+          <br />
+          日常好用篇
+        </p>
+      ), // 4
+    ],
+  ];
+
+  const links = [
+    ['https://www.facebook.com/CapooHouse/',
+      'https://www.facebook.com/foamcatcafe/'],
+    [],
+    [],
+    [],
+    ['https://store.line.me/stickershop/product/16897/zh-Hant',
+      'https://store.line.me/stickershop/product/9044256/zh-Hant',
+      'https://store.line.me/stickershop/product/3195138/zh-Hant?from=sticker',
+    ],
+    [],
   ];
 
   const alternative = [
@@ -38,27 +73,22 @@ export default function NavOption(props) {
     'line_sticker',
   ];
 
-  function stopBubbling(event) {
-    // console.log(event.target);
-  }
-
-  function creatListItems(item) {
+  function creatListItems(item, index) {
     return (
-      <option
-        key={`${item}Z`}
-        onMouseOver={stopBubbling}
-        onKeyPress={stopBubbling}
-        onFocus={stopBubbling}
+      <a
+        key={`${item}${optionIndex}${index}optionOptions`}
+        href={links[optionIndex][index]}
+        target="_blank"
       >
         {item}
-      </option>
+      </a>
     );
   }
 
   function optionOptions(listIndex) {
     return (
       optionLists[listIndex].map(
-        (item) => creatListItems(item),
+        (item, index) => creatListItems(item, index),
       )
     );
   }

@@ -17,6 +17,8 @@ import conversationLogoM from '../../images/capooPhone.png';
 import tagLogo from '../../images/rainbowCapoo/rainbowCapoo01.png';
 import tagLogoM from '../../images/rainbowCapoo.png';
 import capooShocked from '../../images/capoo_Shocked.png';
+import universeNo1Cuteness from '../../images/universe_No_1_cuteness.png';
+import laughNSilence from '../../images/laugh_and_silence.png';
 
 
 export {
@@ -43,4 +45,6 @@ export {
   faRetweet,
   faShare,
   faHeart,
+  universeNo1Cuteness,
+  laughNSilence,
 };
