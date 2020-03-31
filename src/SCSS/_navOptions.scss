@@ -10,7 +10,7 @@
 
 .blockOfOptionNListTriggered {
   @extend .blockOfOptionNList;
-  background-color: rgb(113, 127, 208);
+  background-color: #717fd0;
 }
 
 .navOptions {
@@ -58,7 +58,7 @@
   width: 100%;
   flex-direction: column;
   border-radius: 8px;
-  background-color: #3f51b7;
+  background-color: #5465c6;
   a {
     width: 100%;
     display: flex;
@@ -66,12 +66,12 @@
     font-size: 1rem;
     border-radius: 8px;
     padding: 0.5rem 0 0.5rem 10%;
-    color: white;
-    border-bottom: white 1px solid;
+    color: #faf0ed;
+    border-bottom: rgb(153, 194, 245) 2px solid;
     text-decoration: none;
     cursor: pointer;
     &:hover {
-      background-color: #71d0c2;
+      background-color: #50c7b5;
     }
   }
  
