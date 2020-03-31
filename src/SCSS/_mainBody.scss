@@ -128,10 +128,17 @@ $logoRatio: 4rem;
     border-radius: 4px;
     cursor: pointer;
     &:hover {
-      background-color: rgb(235, 211, 175);
+      background-color: rgb(250, 239, 223);
       color: #36babf;
+      transform: translate(-2px, -2px);
+      box-shadow: 2px 2px 5px rgb(175, 174, 255);
     }
   }
+}
+
+.fIconContainerHover {
+  background-color: rgb(235, 211, 175);
+  color: #36babf;
 }
 
 .postButton {
