@@ -9,10 +9,11 @@ import styles from '../index.scss';
 
 export default function Capoo() {
   // Object handle item numbers
-  const [itemNumber] = useState({
+  const itemNumber = {
     optionNumber: 5,
-    iconNumber: 3,
-  });
+    useNumber: 1,
+  };
+
   // handle the state about whether the navgation bar icon is focused
   const [optionArray, setOptionArray] = useState(
     Array(itemNumber.optionNumber).fill(styles.blockOfOptionNList),
@@ -46,16 +47,17 @@ export default function Capoo() {
     Array(itemNumber.optionNumber).fill(styles.notShow),
   );
 
-  const [iconArray, setIconArray] = useState(
-    Array(itemNumber.iconNumber).fill(styles.navListNotShown),
+  const [useArray, setUseArray] = useState(
+    Array(itemNumber.useNumber).fill(styles.blockOfOptionNList),
+  );
+
+  const [useOptionsArray, setUseOptionsArray] = useState(
+    Array(itemNumber.useNumber).fill(styles.notShow),
   );
 
   function clickBlank() {
     setOptionArray(
       Array(itemNumber.optionNumber).fill(styles.blockOfOptionNList),
-    );
-    setIconArray(
-      Array(itemNumber.iconNumber).fill(styles.navListNotShown),
     );
     setCapooImages(
       capooImagesArray,
@@ -63,84 +65,15 @@ export default function Capoo() {
     setOptionOptionsArray(
       Array(itemNumber.optionNumber).fill(styles.notShow),
     );
+    setUseArray(
+      Array(itemNumber.useNumber).fill(styles.blockOfOptionNList),
+    );
+    setUseOptionsArray(
+      Array(itemNumber.optionNumber).fill(styles.notShow),
+    );
   }
 
-  function areaChange(AreaNumber) {
-    let iconArrayCopy = iconArray.slice();
-    let optionArrayCopy = optionArray.slice();
-    switch (AreaNumber) {
-      case 1:
-        optionArrayCopy = optionArrayCopy.fill(
-          styles.blockOfOptionNList,
-        );
-        setOptionArray(
-          optionArrayCopy,
-        );
-        break;
-      case 0:
-        iconArrayCopy = iconArrayCopy.fill(
-          styles.navListNotShown,
-        );
-        setIconArray(
-          iconArrayCopy,
-        );
-        break;
-      default:
-        break;
-    }
-  }
-
-  function clickIcon(indexOfIcon) {
-    const iconArrayCopy = iconArray.slice();
-    switch (iconArrayCopy[indexOfIcon]) {
-      case styles.navListNotShown:
-        iconArrayCopy.fill(
-          styles.navListNotShown,
-        );
-        iconArrayCopy[indexOfIcon] = styles.navListShown;
-        break;
-      case styles.navListShown:
-        iconArrayCopy[indexOfIcon] = styles.navListNotShown;
-        break;
-      default:
-        break;
-    }
-    setIconArray(iconArrayCopy);
-  }
-
-  function clickOption(indexOfOption) {
-    const optionArrayCopy = optionArray.slice();
-    const optionOptionsArrayCopy = optionOptionsArray.slice();
-    let capooImagesCopy = capooImages.slice();
-    switch (optionArrayCopy[indexOfOption]) {
-      case styles.blockOfOptionNList:
-        optionArrayCopy.fill(
-          styles.blockOfOptionNList,
-        );
-        optionOptionsArrayCopy.fill(
-          styles.notShow,
-        );
-        optionArrayCopy[indexOfOption] = styles.blockOfOptionNListTriggered;
-        optionOptionsArrayCopy[indexOfOption] = styles.optionOptions;
-        capooImagesCopy = capooImagesArray;
-        capooImagesCopy[indexOfOption] = capooImagesM[indexOfOption];
-        break;
-      case styles.blockOfOptionNListTriggered:
-        optionArrayCopy[indexOfOption] = styles.blockOfOptionNList;
-        optionOptionsArrayCopy[indexOfOption] = styles.notShow;
-        capooImagesCopy = capooImagesArray;
-        break;
-      default:
-        break;
-    }
-    setOptionArray(optionArrayCopy);
-    setOptionOptionsArray(optionOptionsArrayCopy);
-    setCapooImages(capooImagesCopy);
-  }
-
-  function animateCapoo(indexOfImages, event) {
-    event.stopPropagation();
-    event.preventDefault();
+  function animateCapoo(indexOfImages) {
     // The maxTouchPoints read-only property of the Navigator interface
     // returns the maximum number of simultaneous touch contact points
     // are supported by the current device.
@@ -156,6 +89,9 @@ export default function Capoo() {
       setOptionArray(optionArrayCopy);
       setOptionOptionsArray(optionOptionsArrayCopy);
       setCapooImages(capooImagesCopy);
+      const useArrayCopy = useArray.slice();
+      useArrayCopy.fill(styles.blockOfOptionNList);
+      setUseArray(useArrayCopy);
     }
   }
 
@@ -164,6 +100,73 @@ export default function Capoo() {
       setOptionArray(Array(itemNumber.optionNumber).fill(styles.blockOfOptionNList));
       setOptionOptionsArray(Array(itemNumber.optionNumber).fill(styles.notShow));
       setCapooImages(capooImagesArray);
+    }
+  }
+
+  function usesHover(indexOfUses) {
+    if (!(navigator.maxTouchPoints)) {
+      const useArrayCopy = useArray.slice();
+      const useOptionsArrayCopy = useOptionsArray.slice();
+      useArrayCopy[indexOfUses] = styles.blockOfOptionNListTriggered;
+      useOptionsArrayCopy[indexOfUses] = styles.optionOptions;
+      setUseArray(useArrayCopy);
+      setUseOptionsArray(useOptionsArrayCopy);
+      setOptionArray(
+        Array(itemNumber.optionNumber).fill(styles.blockOfOptionNList),
+      );
+      setCapooImages(
+        capooImagesArray,
+      );
+      setOptionOptionsArray(
+        Array(itemNumber.optionNumber).fill(styles.notShow),
+      );
+    }
+  }
+
+  function leaveUses() {
+    if (!(navigator.maxTouchPoints)) {
+      setUseArray(Array(itemNumber.useNumber).fill(styles.blockOfOptionNList));
+      setUseOptionsArray(Array(itemNumber.useNumber).fill(styles.notShow));
+    }
+  }
+
+  // optimizing for touchable devices
+  function clickOption(indexOfOption) {
+    if (navigator.maxTouchPoints) {
+      // Keep primary array immutable via copy it
+      const optionArrayCopy = optionArray.slice();
+      const optionOptionsArrayCopy = optionOptionsArray.slice();
+      let capooImagesCopy = capooImages.slice();
+      switch (optionArrayCopy[indexOfOption]) {
+        case styles.blockOfOptionNList:
+          optionArrayCopy.fill(
+            styles.blockOfOptionNList,
+          );
+          optionOptionsArrayCopy.fill(
+            styles.notShow,
+          );
+          optionArrayCopy[indexOfOption] = styles.blockOfOptionNListTriggered;
+          optionOptionsArrayCopy[indexOfOption] = styles.optionOptions;
+          capooImagesCopy = capooImagesArray;
+          capooImagesCopy[indexOfOption] = capooImagesM[indexOfOption];
+          break;
+        case styles.blockOfOptionNListTriggered:
+          optionArrayCopy[indexOfOption] = styles.blockOfOptionNList;
+          optionOptionsArrayCopy[indexOfOption] = styles.notShow;
+          capooImagesCopy = capooImagesArray;
+          break;
+        default:
+          break;
+      }
+      setOptionArray(optionArrayCopy);
+      setOptionOptionsArray(optionOptionsArrayCopy);
+      setCapooImages(capooImagesCopy);
+      // set other navgation area to primary state
+      const useArrayCopy = useArray.slice();
+      useArrayCopy.fill(
+        styles.blockOfOptionNList,
+      );
+      setUseArray(useArrayCopy);
     }
   }
 
@@ -195,7 +198,6 @@ export default function Capoo() {
         capooDrag.style.top = `${y}px`;
       } else {
         event.preventDefault();
-        // document.body.addEventListener('touchmove', preventD, { passive: false });
         capooX = event.touches['0'].clientX - startX;
         capooY = event.touches['0'].clientY - startY;
         capooX = Math.max(Math.min(capooX, dragableArea.right), dragableArea.left);
@@ -258,15 +260,20 @@ export default function Capoo() {
   return (
     <div className={styles.mainConcept}>
       <NavigationBar
-        areaChange={areaChange}
-        iconArray={iconArray}
-        clickIcon={clickIcon}
+        // for animate options
         optionArray={optionArray}
-        clickOption={clickOption}
+        optionNumber={itemNumber.optionNumber}
         capooImages={capooImages}
         animateCapoo={animateCapoo}
         notAnimateCapoo={notAnimateCapoo}
         optionOptionsArray={optionOptionsArray}
+        // for touchable devices
+        clickOption={clickOption}
+        // for FontAwesome uses
+        useArray={useArray}
+        usesHover={usesHover}
+        leaveUses={leaveUses}
+        useOptionsArray={useOptionsArray}
       />
       <Mainbody
         logo={logos.logo}

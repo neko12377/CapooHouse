@@ -1,15 +1,5 @@
 // nav-bar options
 import React from 'react';
-// Try FontAwesome
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import {
-//   faPalette, faEnvelopeOpenText, faAngleDoubleUp, faAt,
-// } from '@fortawesome/free-solid-svg-icons';
-// import {
-//   faBell, faEnvelope, faPaperPlane,
-// } from '@fortawesome/free-regular-svg-icons';
-// Try FontAwesome
-
 import styles from '../index.scss';
 
 export default function NavOption(props) {
@@ -23,14 +13,13 @@ export default function NavOption(props) {
     optionOptionsArray,
   } = props;
 
-  // Try FontAwesome
-  // const optionImages = [
-  //   faPalette, faBell, faEnvelope, faPaperPlane, faAt,
-  // ];
-  // Try FontAwesome
-
   const optionDescription = [
-    '主題商店', '今日咖波', '咖波訊息', '聊天', 'line貼圖',
+    '主題商店',
+    '今日咖波',
+    '咖波訊息',
+    '聊天',
+    'line貼圖',
+    '設定',
   ];
 
   const optionLists = [
@@ -43,21 +32,23 @@ export default function NavOption(props) {
 
   const alternative = [
     'homepage',
-    'dance', 'mail',
+    'dance',
+    'mail',
     'conversation',
     'line_sticker',
   ];
 
   function stopBubbling(event) {
-    console.log(event.target);
+    // console.log(event.target);
   }
 
   function creatListItems(item) {
     return (
       <option
         key={`${item}Z`}
-        onClick={stopBubbling}
+        onMouseOver={stopBubbling}
         onKeyPress={stopBubbling}
+        onFocus={stopBubbling}
       >
         {item}
       </option>
@@ -71,11 +62,11 @@ export default function NavOption(props) {
       )
     );
   }
-
+  // nav-bar options
   return (
     <div
       className={optionClass}
-      onMouseOver={(event) => animateCapoo(event)}
+      onMouseOver={animateCapoo}
       onMouseOut={notAnimateCapoo}
       onFocus={animateCapoo}
       onBlur={notAnimateCapoo}
@@ -88,7 +79,6 @@ export default function NavOption(props) {
         aria-label="navOption"
         tabIndex={0}
       >
-        {/* <FontAwesomeIcon icon={optionImages[optionIndex]} /> */}
         <div className={styles.capooContainer}>
           <img
             className={styles.capooImage}
@@ -106,4 +96,3 @@ export default function NavOption(props) {
     </div>
   );
 }
-// nav-bar options

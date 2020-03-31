@@ -1,3 +1,10 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faCogs, faMusic, faFilm, faCameraRetro,
+  faHeadphonesAlt, faChartLine, faRetweet,
+  faShare,
+} from '@fortawesome/free-solid-svg-icons';
+import { faComment, faHeart } from '@fortawesome/free-regular-svg-icons';
 import logo from '../../images/Capoo_hold_its_feet.png';
 import homePageLogo from '../../images/cute_king/cute_king01.png';
 import homePageLogoM from '../../images/cute_king.png';
@@ -9,8 +16,11 @@ import conversationLogo from '../../images/capooPhone/capooPhone01.png';
 import conversationLogoM from '../../images/capooPhone.png';
 import tagLogo from '../../images/rainbowCapoo/rainbowCapoo01.png';
 import tagLogoM from '../../images/rainbowCapoo.png';
+import capooShocked from '../../images/capoo_Shocked.png';
+
 
 export {
+  FontAwesomeIcon,
   logo,
   homePageLogo,
   homePageLogoM,
@@ -22,4 +32,15 @@ export {
   conversationLogoM,
   tagLogo,
   tagLogoM,
+  faCogs,
+  faComment,
+  faMusic,
+  faFilm,
+  faCameraRetro,
+  faHeadphonesAlt,
+  faChartLine,
+  capooShocked,
+  faRetweet,
+  faShare,
+  faHeart,
 };

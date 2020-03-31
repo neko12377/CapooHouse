@@ -1,22 +1,22 @@
 $imagesWithContext: 235px;
 $imagesWithoutContext: 86px;
 
-.navBackground {
+.header {
   @extend %dfc;
   min-width: $imagesWithoutContext;
   @include userSelect(none);
-  border: $B;
 }
 
-.navBackgroundfixed {
-  @extend .navBackground;
-  padding: 0.5rem 0;
+.headerfixed {
+  @extend .header;
   position: fixed;
+  border-left: solid 1px #408e91;
+  border-bottom: solid 1px #408e91;
+  border-radius: 4px;
 }
 
 .navBar {
   @extend %plm;
-  position: relative;
   width: 100%;
   flex-direction: column;
 }
@@ -46,12 +46,12 @@ $imagesWithoutContext: 86px;
   outline: none;
 }
 
-.navIcon {
-  @extend %navArea;
+.navOptionCog {
+  @extend .navOption;
 }
 
 @include phone {
-  .navBackgroundfixed {
+  .headerfixed {
     position: fixed;
     bottom: 0;
     left: 0;
@@ -62,6 +62,8 @@ $imagesWithoutContext: 86px;
 
   .navBar {
     flex-direction: row;
+    border-radius: 16px 16px 0 0;
+    background-color: rgb(113, 127, 208);
   }
 
   %navArea {
@@ -73,7 +75,7 @@ $imagesWithoutContext: 86px;
     margin: 0;
   }
 
-  .navIcon {
+  .navOptionCog {
     display: none;
   }
 }
@@ -83,11 +85,11 @@ $imagesWithoutContext: 86px;
     width: 100%;
   }
 
-  .navBackground {
+  .header {
     width: $imagesWithoutContext;
   }
 
-  .navBackgroundfixed {
+  .headerfixed {
     top: 0;
   }
 
@@ -107,7 +109,7 @@ $imagesWithoutContext: 86px;
     width: 100%;
   }
 
-  .navBackground {
+  .header {
     width: $imagesWithoutContext;
   }
 }
@@ -117,7 +119,7 @@ $imagesWithoutContext: 86px;
     width: 100%;
   }
 
-  .navBackground {
+  .header {
     width: $imagesWithoutContext;
   } 
 
@@ -131,11 +133,11 @@ $imagesWithoutContext: 86px;
 }
 
 @include PC {
-  .navBackground {
+  .header {
     width: $imagesWithContext;
   } 
 
-  .navBackgroundfixed {
+  .headerfixed {
     padding: 0.5rem 2%;
   }
 

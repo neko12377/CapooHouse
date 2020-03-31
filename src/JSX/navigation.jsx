@@ -1,81 +1,90 @@
 // nvigation bar
 import React from 'react';
-import NavIcons from './navIcons.jsx';
 import NavOptions from './optionIcons.jsx';
+import SettingSection from './settingSection.jsx';
 import styles from '../index.scss';
 
 export default function NavigationBar(props) {
   const {
-    iconArray, clickIcon,
-    optionArray, clickOption,
-    areaChange,
+    // for animate options
+    optionArray,
     capooImages,
-    animateCapoo, notAnimateCapoo,
+    animateCapoo,
+    notAnimateCapoo,
     optionOptionsArray,
+    // for touch device
+    clickOption,
+    // for FontAwesome uses
+    useArray,
+    useOptionsArray,
+    usesHover,
+    leaveUses,
   } = props;
 
   function createOptions(optionStyle, index) {
     return (
       <NavOptions
+        // React ask me to have one
         key={`${index}O`}
         optionClass={optionStyle}
-        clickOption={() => clickOption(index)}
+        // Distinguish every option items by sequence
         optionIndex={index}
         capooImages={capooImages}
-        animateCapoo={(event) => animateCapoo(index, event)}
+        animateCapoo={() => animateCapoo(index)}
         notAnimateCapoo={notAnimateCapoo}
         optionOptionsArray={optionOptionsArray}
+        // optimizing for touchable devices
+        clickOption={() => clickOption(index)}
       />
     );
   }
-
+  // Create a list of option components
   function groupOptions() {
     return (
       optionArray.map((optionStyle, index) => createOptions(optionStyle, index))
     );
   }
 
-  function createIcons(iconStyle, index) {
+  function createUses(optionStyle, index) {
     return (
-      <NavIcons
-        key={`${index}I`}
-        iconClass={iconStyle}
-        clickIcon={() => clickIcon(index)}
-        iconImage={index}
+      <SettingSection
+        // React ask me to have one
+        key={`${index}O`}
+        // Distinguish every uses via sequence
+        usesIndex={index}
+        usesHover={() => usesHover(index)}
+        leaveUses={leaveUses}
+        useOptionsArray={useOptionsArray}
+        // optimizing for touchable devices
+        optionClass={optionStyle}
       />
     );
   }
 
-  function groupIcons() {
+  function groupUses() {
     return (
-      iconArray.map((iconStyle, index) => createIcons(iconStyle, index))
+      useArray.map((optionStyle, index) => createUses(optionStyle, index))
     );
   }
 
   return (
-    <div className={styles.navBackground}>
-      <div className={styles.navBackgroundfixed}>
+    <header className={styles.header}>
+      <div className={styles.headerfixed}>
         <div className={styles.navBar}>
           <div
             className={styles.navOption}
-            onClick={() => areaChange(0)}
-            onKeyPress={areaChange}
-            role="button"
-            tabIndex={0}
           >
             {groupOptions()}
           </div>
+        </div>
+        <div className={styles.navBar}>
           <div
-            className={styles.navIcon}
-            onClick={() => areaChange(1)}
-            onKeyPress={areaChange}
-            role="button"
-            tabIndex={0}
+            className={styles.navOptionCog}
           >
-            {groupIcons()}
+            {groupUses()}
           </div>
         </div>
       </div>
-    </div>
+    </header>
   );
 }

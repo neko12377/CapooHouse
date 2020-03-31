@@ -1,5 +1,68 @@
 .informationBlock {
-  @extend %dfc;
-  min-height: 100px;
-  border: $B;
+  width: 100%;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding-bottom: 0.5rem;
+  border-bottom: solid 1px #408e91;
+}
+
+.informUserIconBlock {
+  @extend .userIconBlock;
+}
+
+.informUserIcon {
+  @extend .userIcon;
+}
+
+.informContentBlock {
+  width: 100%;
+  padding-right: 1rem;
+  flex-wrap: wrap;
+}
+
+.informUserName {
+  width: 100%;
+  justify-content: flex-start;
+  font-size: 1.2rem;
+  color: rgb(140, 80, 237);
+}
+
+.informContent {
+  width: 100%;
+  border-radius: 16px;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  justify-content: flex-start;
+  font-size: 1.2rem;
+  color: #a06653;
+  white-space: pre;
+  background-color: blanchedalmond;
+}
+
+.informResponsesBlock {
+  width: 100%;
+  padding: 0.5rem 0 0 1rem;
+  justify-content: space-between;
+  color: #247f83;
+  font-size: 1.3rem;
+}
+
+.informResponse {
+  justify-content: flex-start;
+}
+
+.informResponseHover {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  cursor: pointer;
+  &:hover {
+    color: #31b6bd;
+    background-color: rgb(238, 199, 170);
+  }
+}
+
+.informResponseNumber {
+  width: 50%;
+  font-size: 1rem;
+  justify-content: flex-start;
 }

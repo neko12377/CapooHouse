@@ -2,7 +2,6 @@
   @extend %plt;
   overflow: scroll;
   padding: 0 1%;
-  border: solid 5px rgb(152, 51, 152);
 
   @include phone {
     flex-direction: column-reverse;
