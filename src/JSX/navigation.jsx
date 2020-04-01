@@ -25,7 +25,7 @@ export default function NavigationBar(props) {
     return (
       <NavOptions
         // React ask me to have one
-        key={`${index}O`}
+        key={`options_${index}`}
         optionClass={optionStyle}
         // Distinguish every option items by sequence
         optionIndex={index}
@@ -49,7 +49,7 @@ export default function NavigationBar(props) {
     return (
       <SettingSection
         // React ask me to have one
-        key={`${index}O`}
+        key={`uses_${index}`}
         // Distinguish every uses via sequence
         usesIndex={index}
         usesHover={() => usesHover(index)}

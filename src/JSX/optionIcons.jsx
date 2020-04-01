@@ -76,7 +76,7 @@ export default function NavOption(props) {
   function creatListItems(item, index) {
     return (
       <a
-        key={`${item}${optionIndex}${index}optionOptions`}
+        key={`optionOptions_${item}${optionIndex}${index}`}
         href={links[optionIndex][index]}
         target="_blank"
       >
