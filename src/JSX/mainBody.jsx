@@ -10,7 +10,32 @@ export default function Mainbody(props) {
   } = props;
 
 
-  const contentArray = [
+  const [contentArray, setContentArray] = useState([
+    (
+      <p>
+        咖波
+      </p>
+    ),
+    '咖波',
+    '咖波',
+    '咖波',
+    (
+      <img
+        src={iconsNimages.laughNSilence}
+        alt="universe_No_1_cuteness"
+      />
+    ),
+    (
+      <div className={styles.informContent}>
+        <img
+          src={iconsNimages.universeNo1Cuteness}
+          alt="universe_No_1_cuteness"
+        />
+        <p>
+          咖波超可愛
+        </p>
+      </div>
+    ),
     (
       <p>
         商店可以連結到:
@@ -21,32 +46,7 @@ export default function Mainbody(props) {
         {'\n'}
       </p>
     ),
-    (
-      <p>
-        <img
-          src={iconsNimages.universeNo1Cuteness}
-          alt="universe_No_1_cuteness"
-        />
-        <div>
-          咖波超可愛
-        </div>
-      </p>
-    ),
-    '還在學怎麼串資料庫的API',
-    '所以要用到資料庫的功能',
-    '都還不能用',
-    (
-      <img
-        src={iconsNimages.laughNSilence}
-        alt="universe_No_1_cuteness"
-      />
-    ),
-    (
-      <p>
-        繼續努力研究
-      </p>
-    ),
-  ];
+  ]);
 
   const [buttonStyle, setButtonStyle] = useState(styles.postButton);
 
@@ -61,10 +61,9 @@ export default function Mainbody(props) {
   }
 
   function therapeuticClick() {
-    setButtonStyle(styles.postButtonClicked);
-    setTimeout(() => {
-      setButtonStyle(styles.postButton);
-    }, 300);
+    const contentArrayCopy = contentArray.slice();
+    contentArrayCopy.push('Nothing inside, yet');
+    setContentArray(contentArrayCopy);
   }
 
   function deliverInformToBlocks(content, index) {
@@ -88,10 +87,10 @@ export default function Mainbody(props) {
   return (
     <content
       className={styles.contentBody}
-      onClick={clickBlank}
-      onKeyPress={clickBlank}
-      role="button"
-      tabIndex="0"
+      // onClick={clickBlank}
+      // onKeyPress={clickBlank}
+      // role="button"
+      // tabIndex="0"
       aria-label="mainBody"
     >
       <div className={styles.contentHeaderBlock}>
@@ -114,10 +113,19 @@ export default function Mainbody(props) {
             />
           </div>
         </div>
-        <form className={styles.inputArea}>
-          <input
+        <form
+          className={styles.inputArea}
+          action="#"
+          name="posts"
+          method="get"
+        >
+          <textarea
             className={styles.postContent}
             placeholder="Share with Capoo"
+            name="posts"
+            type="text"
+            form="posts"
+            maxLength="500"
           />
           <div className={styles.postIcons}>
             <div className={styles.postIconBlock}>

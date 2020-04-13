@@ -5,7 +5,6 @@ import * as iconsNimages from './imageResources.jsx';
 export default function InformationBlock(props) {
   const {
     content,
-    contentArrayIndex,
   } = props;
 
   const responseIcons = [

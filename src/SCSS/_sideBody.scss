@@ -29,12 +29,7 @@
   background-color: blanchedalmond;
   ;
   flex-direction: column;
-  box-shadow: 4px 4px 4px #3d076c ;
-}
-
-.newsBlockBottom {
-  padding: 0.5rem;
-  justify-content: flex-start;
+  box-shadow: 4px 4px 4px #3d076c;
 }
 
 .newsContent {
@@ -42,6 +37,17 @@
   border-bottom: solid 1px #408e91;
   font-size: large;
   font-weight: 900;
+  justify-content: flex-start;
+  &:hover {
+    background-color: rgb(111, 247, 172);
+  }
+  &:nth-child(1) {
+    border-radius: 14px 14px 0 0;
+  }
+}
+
+.newsBlockBottom {
+  padding: 0.5rem;
   justify-content: flex-start;
 }
 

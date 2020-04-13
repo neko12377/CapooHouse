@@ -94,13 +94,15 @@ $logoRatio: 4rem;
 
 .postContent {
   width: 100%;
-  font-size: 2.5rem;
+  font-size: 1.5rem;
   padding-left: 0.5rem;
   color: #a06653;
   min-height: 50%;
   background-color: blanchedalmond;
   outline: none;
+  resize: none;
   &::placeholder {
+    font-size: 2.5rem;
     color: rgba(39, 228, 133, 0.221);
   }
   &:focus{
@@ -199,6 +201,7 @@ $logoRatio: 4rem;
 
 .informSection {
   @extend %dfc;
+  flex-direction: column-reverse;
 }
 
 @include phone {
