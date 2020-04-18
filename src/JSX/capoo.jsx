@@ -8,6 +8,7 @@ import SideBody from './sideBody.jsx';
 import styles from '../index.scss';
 
 export default function Capoo() {
+  const userName = 'kasper chen';
   // Object handle item numbers
   const itemNumber = {
     optionNumber: 5,
@@ -283,6 +284,7 @@ export default function Capoo() {
         clickOption={clickOption}
         // for FontAwesome uses
         useArray={useArray}
+        userName={userName}
         usesHover={usesHover}
         leaveUses={leaveUses}
         useOptionsArray={useOptionsArray}

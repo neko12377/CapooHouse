@@ -56,6 +56,9 @@ $ThirdColor: #86e96d;
   padding: 0;
   @include boxSizing(border-box);
   border: none;
+  ::-webkit-scrollbar{
+    display: none;
+  }
 }
 
 %df {

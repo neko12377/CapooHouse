@@ -2,7 +2,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faCogs, faMusic, faFilm, faCameraRetro,
   faHeadphonesAlt, faChartLine, faRetweet,
-  faShare,
+  faShare, faBrain, faBolt, faExternalLinkAlt,
+  faIcons, faUserCog, faQuestion, faQuidditch,
 } from '@fortawesome/free-solid-svg-icons';
 import { faComment, faHeart } from '@fortawesome/free-regular-svg-icons';
 import logo from '../../images/Capoo_hold_its_feet.png';
@@ -19,7 +20,6 @@ import tagLogoM from '../../images/rainbowCapoo.png';
 import capooShocked from '../../images/capoo_Shocked.png';
 import universeNo1Cuteness from '../../images/universe_No_1_cuteness.png';
 import laughNSilence from '../../images/laugh_and_silence.png';
-
 
 export {
   FontAwesomeIcon,
@@ -47,4 +47,11 @@ export {
   faHeart,
   universeNo1Cuteness,
   laughNSilence,
+  faBrain,
+  faBolt,
+  faExternalLinkAlt,
+  faIcons,
+  faUserCog,
+  faQuestion,
+  faQuidditch,
 };

@@ -1,5 +1,4 @@
 import React from 'react';
-// Try FontAwesome
 import * as iconsNimages from './imageResources.jsx';
 import styles from '../index.scss';
 
@@ -11,6 +10,7 @@ export default function SettingSection(props) {
     leaveUses,
     clickOption,
     useOptionsArray,
+    showPss,
   } = props;
 
   const useDescription = [
@@ -25,29 +25,26 @@ export default function SettingSection(props) {
     'Setting',
   ];
 
-  function stopBubbling(event) {
-    console.log(event.target);
-  }
-
-  function creatListItems(item) {
+  function creatListItems(item, index) {
     return (
-      <a
-        key={`${item}_useOption`}
-        href="#"
+      <div
+        key={`${item}_${index}_useOption`}
+        onClick={showPss}
       >
         {item}
-      </a>
+      </div>
     );
   }
 
   function useOptions(listIndex) {
     return (
       useLists[listIndex].map(
-        (item) => creatListItems(item),
+        (item, index) => creatListItems(item, index),
       )
     );
   }
   // nav-bar options
+
   return (
     <div
       className={optionClass}

@@ -1,7 +1,8 @@
 // nvigation bar
-import React from 'react';
+import React, { useState } from 'react';
 import NavOptions from './optionIcons.jsx';
 import SettingSection from './settingSection.jsx';
+import PersonalSetting from './personalSetting.jsx';
 import styles from '../index.scss';
 
 export default function NavigationBar(props) {
@@ -19,7 +20,21 @@ export default function NavigationBar(props) {
     useOptionsArray,
     usesHover,
     leaveUses,
+    userName,
   } = props;
+
+  const [personalSettingSection, showPersonalSettingSection] = useState(styles.notShow);
+  const [personalSettingSectionMask, showPersonalSettingSectionMask] = useState(styles.notShow);
+
+  function showPss() {
+    showPersonalSettingSection(styles.psContainer);
+    showPersonalSettingSectionMask(styles.psContainerControler);
+  }
+
+  function hidePss() {
+    showPersonalSettingSection(styles.notShow);
+    showPersonalSettingSectionMask(styles.notShow);
+  }
 
   function createOptions(optionStyle, index) {
     return (
@@ -57,6 +72,7 @@ export default function NavigationBar(props) {
         useOptionsArray={useOptionsArray}
         // optimizing for touchable devices
         optionClass={optionStyle}
+        showPss={showPss}
       />
     );
   }
@@ -85,6 +101,12 @@ export default function NavigationBar(props) {
           </div>
         </div>
       </div>
+      <PersonalSetting
+        userName={userName}
+        personalSettingSection={personalSettingSection}
+        personalSettingSectionMask={personalSettingSectionMask}
+        hidePss={hidePss}
+      />
     </header>
   );
 }

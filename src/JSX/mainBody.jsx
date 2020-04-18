@@ -5,7 +5,6 @@ import styles from '../index.scss';
 
 export default function Mainbody(props) {
   const {
-    clickBlank,
     logo,
   } = props;
 
